@@ -9,7 +9,7 @@ namespace PisFirst.Controllers
             throw new NotImplementedException();
         }
 
-        public void AddAccountCard(string recordId, params string[] p)
+        public void AddAccountCard(params string[] p)
         {
             throw new NotImplementedException();
         }
@@ -29,22 +29,22 @@ namespace PisFirst.Controllers
             throw new NotImplementedException();
         }
 
-        public void ShowRecordCard(string recordId)
+        public void GetFormatJournalRecords(string[] filters, string[] sort)
         {
             throw new NotImplementedException();
         }
 
-        public void ExportExcelRegistryRecords(params string[] filters)
+        public void ExportExcelRegistryRecords(string[] filters, string[] sort)
         {
             throw new NotImplementedException();
         }
 
-        public void ExportExcelTrappingApplications(params string[] filters)
+        public void ExportExcelTrappingApplications(string[] filters, string[] sort)
         {
             throw new NotImplementedException();
         }
 
-        public void ExportWordTrappingApplications(params string[] filters)
+        public void ExportWordTrappingApplications(string[] filters, string[] sort)
         {
             throw new NotImplementedException();
         }

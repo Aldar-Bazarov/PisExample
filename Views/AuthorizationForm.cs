@@ -43,15 +43,15 @@ namespace PisFirst.Views
                 return;
             }
 
-            var isExist = Authorization.Authorize(textBox_login.Text, textBox_password.Text);
+            var isExist = AuthorizationController.Authorize(textBox_login.Text, textBox_password.Text);
 
             if (isExist)
             {
                 MessageBox.Show("Вы успешно вошли!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                var mainForm = new MainForm();
+
                 this.Hide();
-                mainForm.ShowDialog();
-                Show();
+                new MainForm().ShowDialog();
+                this.Close();
             }
             else
             {
