@@ -13,10 +13,10 @@ namespace PisFirst.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TestDbContext : DbContext
+    public partial class labEntity : DbContext
     {
-        public TestDbContext()
-            : base("name=TestDbContext")
+        public labEntity()
+            : base("name=labEntity")
         {
         }
     

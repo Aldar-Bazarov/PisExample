@@ -19,17 +19,14 @@ namespace PisFirst.Models
         {
             this.Omsu = new HashSet<Omsu>();
             this.Organization = new HashSet<Organization>();
-            this.RegistrationCard = new HashSet<RegistrationCard>();
         }
     
-        public int mp_id { get; set; }
-        public string mp_name { get; set; }
+        public int md_id { get; set; }
+        public string md_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Omsu> Omsu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Organization> Organization { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RegistrationCard> RegistrationCard { get; set; }
     }
 }

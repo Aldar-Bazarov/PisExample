@@ -23,7 +23,7 @@ namespace PisFirst.Models
     
         public int om_id { get; set; }
         public string om_name { get; set; }
-        public Nullable<int> mp_id { get; set; }
+        public Nullable<int> md_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AppUser> AppUser { get; set; }

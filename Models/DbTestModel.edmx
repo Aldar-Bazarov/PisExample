@@ -4,64 +4,64 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище TestDbModelka" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище TestDbContext" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AnimalCategory">
           <Key>
             <PropertyRef Name="anc_id" />
           </Key>
           <Property Name="anc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="anc_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="anc_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ApplicantCategory">
           <Key>
             <PropertyRef Name="apc_id" />
           </Key>
           <Property Name="apc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="apc_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="apc_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ApplicationStatus">
           <Key>
             <PropertyRef Name="as_id" />
           </Key>
           <Property Name="as_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="as_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="as_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="AppUser">
           <Key>
             <PropertyRef Name="u_id" />
           </Key>
           <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="u_first_name" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="u_second_name" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="u_phone_number" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="u_login" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="u_password" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="u_first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_second_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_phone_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_password" Type="nvarchar" MaxLength="32" Nullable="false" />
           <Property Name="ur_id" Type="int" />
           <Property Name="om_id" Type="int" />
           <Property Name="or_id" Type="int" />
         </EntityType>
         <EntityType Name="MunicipalDistrict">
           <Key>
-            <PropertyRef Name="mp_id" />
+            <PropertyRef Name="md_id" />
           </Key>
-          <Property Name="mp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="mp_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="md_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="md_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Omsu">
           <Key>
             <PropertyRef Name="om_id" />
           </Key>
           <Property Name="om_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="om_name" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="mp_id" Type="int" />
+          <Property Name="om_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="md_id" Type="int" />
         </EntityType>
         <EntityType Name="Organization">
           <Key>
             <PropertyRef Name="or_id" />
           </Key>
           <Property Name="or_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="or_name" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="mp_id" Type="int" />
+          <Property Name="or_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="md_id" Type="int" />
         </EntityType>
         <EntityType Name="RegistrationCard">
           <Key>
@@ -69,10 +69,10 @@
           </Key>
           <Property Name="rc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="rc_application_date" Type="date" Nullable="false" />
-          <Property Name="rc_animal_habitat" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="rc_capture_reason" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="rc_animal_habitat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="rc_capture_reason" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="rc_signing_date" Type="date" Nullable="false" />
-          <Property Name="rc_signature" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="rc_signature" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="u_id" Type="int" />
           <Property Name="om_id" Type="int" />
           <Property Name="or_id" Type="int" />
@@ -80,21 +80,20 @@
           <Property Name="anc_id" Type="int" />
           <Property Name="apc_id" Type="int" />
           <Property Name="as_id" Type="int" />
-          <Property Name="mp_id" Type="int" />
         </EntityType>
         <EntityType Name="UrgencyType">
           <Key>
             <PropertyRef Name="ut_id" />
           </Key>
           <Property Name="ut_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ut_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ut_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
             <PropertyRef Name="ur_id" />
           </Key>
           <Property Name="ur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ur_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ur_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__AppUser__om_id__2F10007B">
           <End Role="Omsu" Type="Self.Omsu" Multiplicity="0..1" />
@@ -132,31 +131,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Omsu__mp_id__286302EC">
-          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Omsu__md_id__267ABA7A">
+          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1" />
           <End Role="Omsu" Type="Self.Omsu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MunicipalDistrict">
-              <PropertyRef Name="mp_id" />
+              <PropertyRef Name="md_id" />
             </Principal>
             <Dependent Role="Omsu">
-              <PropertyRef Name="mp_id" />
+              <PropertyRef Name="md_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Organizat__mp_id__2B3F6F97">
-          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Organizat__md_id__29572725">
+          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1" />
           <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MunicipalDistrict">
-              <PropertyRef Name="mp_id" />
+              <PropertyRef Name="md_id" />
             </Principal>
             <Dependent Role="Organization">
-              <PropertyRef Name="mp_id" />
+              <PropertyRef Name="md_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -193,18 +188,6 @@
             </Principal>
             <Dependent Role="RegistrationCard">
               <PropertyRef Name="as_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Registrat__mp_id__412EB0B6">
-          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1" />
-          <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MunicipalDistrict">
-              <PropertyRef Name="mp_id" />
-            </Principal>
-            <Dependent Role="RegistrationCard">
-              <PropertyRef Name="mp_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -256,7 +239,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище TestDbModelkaContainer">
+        <EntityContainer Name="Хранилище TestDbContextContainer">
           <EntitySet Name="AnimalCategory" EntityType="Self.AnimalCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantCategory" EntityType="Self.ApplicantCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicationStatus" EntityType="Self.ApplicationStatus" Schema="dbo" store:Type="Tables" />
@@ -279,11 +262,11 @@
             <End Role="UserRole" EntitySet="UserRole" />
             <End Role="AppUser" EntitySet="AppUser" />
           </AssociationSet>
-          <AssociationSet Name="FK__Omsu__mp_id__286302EC" Association="Self.FK__Omsu__mp_id__286302EC">
+          <AssociationSet Name="FK__Omsu__md_id__267ABA7A" Association="Self.FK__Omsu__md_id__267ABA7A">
             <End Role="MunicipalDistrict" EntitySet="MunicipalDistrict" />
             <End Role="Omsu" EntitySet="Omsu" />
           </AssociationSet>
-          <AssociationSet Name="FK__Organizat__mp_id__2B3F6F97" Association="Self.FK__Organizat__mp_id__2B3F6F97">
+          <AssociationSet Name="FK__Organizat__md_id__29572725" Association="Self.FK__Organizat__md_id__29572725">
             <End Role="MunicipalDistrict" EntitySet="MunicipalDistrict" />
             <End Role="Organization" EntitySet="Organization" />
           </AssociationSet>
@@ -297,10 +280,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__Registrat__as_id__403A8C7D" Association="Self.FK__Registrat__as_id__403A8C7D">
             <End Role="ApplicationStatus" EntitySet="ApplicationStatus" />
-            <End Role="RegistrationCard" EntitySet="RegistrationCard" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Registrat__mp_id__412EB0B6" Association="Self.FK__Registrat__mp_id__412EB0B6">
-            <End Role="MunicipalDistrict" EntitySet="MunicipalDistrict" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
           <AssociationSet Name="FK__Registrat__om_id__3B75D760" Association="Self.FK__Registrat__om_id__3B75D760">
@@ -324,13 +303,13 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TestDbModelka" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="TestDbContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AnimalCategory">
           <Key>
             <PropertyRef Name="anc_id" />
           </Key>
           <Property Name="anc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="anc_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="anc_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="RegistrationCard" Relationship="Self.FK__Registrat__anc_i__3E52440B" FromRole="AnimalCategory" ToRole="RegistrationCard" />
         </EntityType>
         <EntityType Name="ApplicantCategory">
@@ -338,7 +317,7 @@
             <PropertyRef Name="apc_id" />
           </Key>
           <Property Name="apc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="apc_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apc_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="RegistrationCard" Relationship="Self.FK__Registrat__apc_i__3F466844" FromRole="ApplicantCategory" ToRole="RegistrationCard" />
         </EntityType>
         <EntityType Name="ApplicationStatus">
@@ -346,7 +325,7 @@
             <PropertyRef Name="as_id" />
           </Key>
           <Property Name="as_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="as_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="as_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="RegistrationCard" Relationship="Self.FK__Registrat__as_id__403A8C7D" FromRole="ApplicationStatus" ToRole="RegistrationCard" />
         </EntityType>
         <EntityType Name="AppUser">
@@ -354,11 +333,11 @@
             <PropertyRef Name="u_id" />
           </Key>
           <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="u_first_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="u_second_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="u_phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="u_login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="u_password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_second_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_phone_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_password" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ur_id" Type="Int32" />
           <Property Name="om_id" Type="Int32" />
           <Property Name="or_id" Type="Int32" />
@@ -369,23 +348,22 @@
         </EntityType>
         <EntityType Name="MunicipalDistrict">
           <Key>
-            <PropertyRef Name="mp_id" />
+            <PropertyRef Name="md_id" />
           </Key>
-          <Property Name="mp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="mp_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Omsu" Relationship="Self.FK__Omsu__mp_id__286302EC" FromRole="MunicipalDistrict" ToRole="Omsu" />
-          <NavigationProperty Name="Organization" Relationship="Self.FK__Organizat__mp_id__2B3F6F97" FromRole="MunicipalDistrict" ToRole="Organization" />
-          <NavigationProperty Name="RegistrationCard" Relationship="Self.FK__Registrat__mp_id__412EB0B6" FromRole="MunicipalDistrict" ToRole="RegistrationCard" />
+          <Property Name="md_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="md_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Omsu" Relationship="Self.FK__Omsu__md_id__267ABA7A" FromRole="MunicipalDistrict" ToRole="Omsu" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK__Organizat__md_id__29572725" FromRole="MunicipalDistrict" ToRole="Organization" />
         </EntityType>
         <EntityType Name="Omsu">
           <Key>
             <PropertyRef Name="om_id" />
           </Key>
           <Property Name="om_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="om_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="mp_id" Type="Int32" />
+          <Property Name="om_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="md_id" Type="Int32" />
           <NavigationProperty Name="AppUser" Relationship="Self.FK__AppUser__om_id__2F10007B" FromRole="Omsu" ToRole="AppUser" />
-          <NavigationProperty Name="MunicipalDistrict" Relationship="Self.FK__Omsu__mp_id__286302EC" FromRole="Omsu" ToRole="MunicipalDistrict" />
+          <NavigationProperty Name="MunicipalDistrict" Relationship="Self.FK__Omsu__md_id__267ABA7A" FromRole="Omsu" ToRole="MunicipalDistrict" />
           <NavigationProperty Name="RegistrationCard" Relationship="Self.FK__Registrat__om_id__3B75D760" FromRole="Omsu" ToRole="RegistrationCard" />
         </EntityType>
         <EntityType Name="Organization">
@@ -393,10 +371,10 @@
             <PropertyRef Name="or_id" />
           </Key>
           <Property Name="or_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="or_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="mp_id" Type="Int32" />
+          <Property Name="or_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="md_id" Type="Int32" />
           <NavigationProperty Name="AppUser" Relationship="Self.FK__AppUser__or_id__300424B4" FromRole="Organization" ToRole="AppUser" />
-          <NavigationProperty Name="MunicipalDistrict" Relationship="Self.FK__Organizat__mp_id__2B3F6F97" FromRole="Organization" ToRole="MunicipalDistrict" />
+          <NavigationProperty Name="MunicipalDistrict" Relationship="Self.FK__Organizat__md_id__29572725" FromRole="Organization" ToRole="MunicipalDistrict" />
           <NavigationProperty Name="RegistrationCard" Relationship="Self.FK__Registrat__or_id__3C69FB99" FromRole="Organization" ToRole="RegistrationCard" />
         </EntityType>
         <EntityType Name="RegistrationCard">
@@ -405,10 +383,10 @@
           </Key>
           <Property Name="rc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="rc_application_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="rc_animal_habitat" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="rc_capture_reason" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rc_animal_habitat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rc_capture_reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="rc_signing_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="rc_signature" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rc_signature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="u_id" Type="Int32" />
           <Property Name="om_id" Type="Int32" />
           <Property Name="or_id" Type="Int32" />
@@ -416,12 +394,10 @@
           <Property Name="anc_id" Type="Int32" />
           <Property Name="apc_id" Type="Int32" />
           <Property Name="as_id" Type="Int32" />
-          <Property Name="mp_id" Type="Int32" />
           <NavigationProperty Name="AnimalCategory" Relationship="Self.FK__Registrat__anc_i__3E52440B" FromRole="RegistrationCard" ToRole="AnimalCategory" />
           <NavigationProperty Name="ApplicantCategory" Relationship="Self.FK__Registrat__apc_i__3F466844" FromRole="RegistrationCard" ToRole="ApplicantCategory" />
           <NavigationProperty Name="ApplicationStatus" Relationship="Self.FK__Registrat__as_id__403A8C7D" FromRole="RegistrationCard" ToRole="ApplicationStatus" />
           <NavigationProperty Name="AppUser" Relationship="Self.FK__Registrati__u_id__3A81B327" FromRole="RegistrationCard" ToRole="AppUser" />
-          <NavigationProperty Name="MunicipalDistrict" Relationship="Self.FK__Registrat__mp_id__412EB0B6" FromRole="RegistrationCard" ToRole="MunicipalDistrict" />
           <NavigationProperty Name="Omsu" Relationship="Self.FK__Registrat__om_id__3B75D760" FromRole="RegistrationCard" ToRole="Omsu" />
           <NavigationProperty Name="Organization" Relationship="Self.FK__Registrat__or_id__3C69FB99" FromRole="RegistrationCard" ToRole="Organization" />
           <NavigationProperty Name="UrgencyType" Relationship="Self.FK__Registrat__ut_id__3D5E1FD2" FromRole="RegistrationCard" ToRole="UrgencyType" />
@@ -431,7 +407,7 @@
             <PropertyRef Name="ut_id" />
           </Key>
           <Property Name="ut_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ut_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ut_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="RegistrationCard" Relationship="Self.FK__Registrat__ut_id__3D5E1FD2" FromRole="UrgencyType" ToRole="RegistrationCard" />
         </EntityType>
         <EntityType Name="UserRole">
@@ -439,7 +415,7 @@
             <PropertyRef Name="ur_id" />
           </Key>
           <Property Name="ur_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ur_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ur_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AppUser" Relationship="Self.FK__AppUser__ur_id__2E1BDC42" FromRole="UserRole" ToRole="AppUser" />
         </EntityType>
         <Association Name="FK__Registrat__anc_i__3E52440B">
@@ -526,43 +502,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Omsu__mp_id__286302EC">
-          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Omsu__md_id__267ABA7A">
+          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1" />
           <End Role="Omsu" Type="Self.Omsu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MunicipalDistrict">
-              <PropertyRef Name="mp_id" />
+              <PropertyRef Name="md_id" />
             </Principal>
             <Dependent Role="Omsu">
-              <PropertyRef Name="mp_id" />
+              <PropertyRef Name="md_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Organizat__mp_id__2B3F6F97">
-          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Organizat__md_id__29572725">
+          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1" />
           <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MunicipalDistrict">
-              <PropertyRef Name="mp_id" />
+              <PropertyRef Name="md_id" />
             </Principal>
             <Dependent Role="Organization">
-              <PropertyRef Name="mp_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Registrat__mp_id__412EB0B6">
-          <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1" />
-          <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MunicipalDistrict">
-              <PropertyRef Name="mp_id" />
-            </Principal>
-            <Dependent Role="RegistrationCard">
-              <PropertyRef Name="mp_id" />
+              <PropertyRef Name="md_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -602,7 +562,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TestDbContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="labEntity" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AnimalCategory" EntityType="Self.AnimalCategory" />
           <EntitySet Name="ApplicantCategory" EntityType="Self.ApplicantCategory" />
           <EntitySet Name="ApplicationStatus" EntityType="Self.ApplicationStatus" />
@@ -641,17 +601,13 @@
             <End Role="AppUser" EntitySet="AppUser" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Omsu__mp_id__286302EC" Association="Self.FK__Omsu__mp_id__286302EC">
+          <AssociationSet Name="FK__Omsu__md_id__267ABA7A" Association="Self.FK__Omsu__md_id__267ABA7A">
             <End Role="MunicipalDistrict" EntitySet="MunicipalDistrict" />
             <End Role="Omsu" EntitySet="Omsu" />
           </AssociationSet>
-          <AssociationSet Name="FK__Organizat__mp_id__2B3F6F97" Association="Self.FK__Organizat__mp_id__2B3F6F97">
+          <AssociationSet Name="FK__Organizat__md_id__29572725" Association="Self.FK__Organizat__md_id__29572725">
             <End Role="MunicipalDistrict" EntitySet="MunicipalDistrict" />
             <End Role="Organization" EntitySet="Organization" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Registrat__mp_id__412EB0B6" Association="Self.FK__Registrat__mp_id__412EB0B6">
-            <End Role="MunicipalDistrict" EntitySet="MunicipalDistrict" />
-            <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
           <AssociationSet Name="FK__Registrat__om_id__3B75D760" Association="Self.FK__Registrat__om_id__3B75D760">
             <End Role="Omsu" EntitySet="Omsu" />
@@ -671,9 +627,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище TestDbModelkaContainer" CdmEntityContainer="TestDbContext">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TestDbContextContainer" CdmEntityContainer="labEntity">
           <EntitySetMapping Name="AnimalCategory">
-            <EntityTypeMapping TypeName="TestDbModelka.AnimalCategory">
+            <EntityTypeMapping TypeName="TestDbContext.AnimalCategory">
               <MappingFragment StoreEntitySet="AnimalCategory">
                 <ScalarProperty Name="anc_id" ColumnName="anc_id" />
                 <ScalarProperty Name="anc_name" ColumnName="anc_name" />
@@ -681,7 +637,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantCategory">
-            <EntityTypeMapping TypeName="TestDbModelka.ApplicantCategory">
+            <EntityTypeMapping TypeName="TestDbContext.ApplicantCategory">
               <MappingFragment StoreEntitySet="ApplicantCategory">
                 <ScalarProperty Name="apc_id" ColumnName="apc_id" />
                 <ScalarProperty Name="apc_name" ColumnName="apc_name" />
@@ -689,7 +645,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicationStatus">
-            <EntityTypeMapping TypeName="TestDbModelka.ApplicationStatus">
+            <EntityTypeMapping TypeName="TestDbContext.ApplicationStatus">
               <MappingFragment StoreEntitySet="ApplicationStatus">
                 <ScalarProperty Name="as_id" ColumnName="as_id" />
                 <ScalarProperty Name="as_name" ColumnName="as_name" />
@@ -697,7 +653,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AppUser">
-            <EntityTypeMapping TypeName="TestDbModelka.AppUser">
+            <EntityTypeMapping TypeName="TestDbContext.AppUser">
               <MappingFragment StoreEntitySet="AppUser">
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
                 <ScalarProperty Name="u_first_name" ColumnName="u_first_name" />
@@ -712,33 +668,33 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MunicipalDistrict">
-            <EntityTypeMapping TypeName="TestDbModelka.MunicipalDistrict">
+            <EntityTypeMapping TypeName="TestDbContext.MunicipalDistrict">
               <MappingFragment StoreEntitySet="MunicipalDistrict">
-                <ScalarProperty Name="mp_id" ColumnName="mp_id" />
-                <ScalarProperty Name="mp_name" ColumnName="mp_name" />
+                <ScalarProperty Name="md_id" ColumnName="md_id" />
+                <ScalarProperty Name="md_name" ColumnName="md_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Omsu">
-            <EntityTypeMapping TypeName="TestDbModelka.Omsu">
+            <EntityTypeMapping TypeName="TestDbContext.Omsu">
               <MappingFragment StoreEntitySet="Omsu">
                 <ScalarProperty Name="om_id" ColumnName="om_id" />
                 <ScalarProperty Name="om_name" ColumnName="om_name" />
-                <ScalarProperty Name="mp_id" ColumnName="mp_id" />
+                <ScalarProperty Name="md_id" ColumnName="md_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Organization">
-            <EntityTypeMapping TypeName="TestDbModelka.Organization">
+            <EntityTypeMapping TypeName="TestDbContext.Organization">
               <MappingFragment StoreEntitySet="Organization">
                 <ScalarProperty Name="or_id" ColumnName="or_id" />
                 <ScalarProperty Name="or_name" ColumnName="or_name" />
-                <ScalarProperty Name="mp_id" ColumnName="mp_id" />
+                <ScalarProperty Name="md_id" ColumnName="md_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RegistrationCard">
-            <EntityTypeMapping TypeName="TestDbModelka.RegistrationCard">
+            <EntityTypeMapping TypeName="TestDbContext.RegistrationCard">
               <MappingFragment StoreEntitySet="RegistrationCard">
                 <ScalarProperty Name="rc_id" ColumnName="rc_id" />
                 <ScalarProperty Name="rc_application_date" ColumnName="rc_application_date" />
@@ -753,12 +709,11 @@
                 <ScalarProperty Name="anc_id" ColumnName="anc_id" />
                 <ScalarProperty Name="apc_id" ColumnName="apc_id" />
                 <ScalarProperty Name="as_id" ColumnName="as_id" />
-                <ScalarProperty Name="mp_id" ColumnName="mp_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UrgencyType">
-            <EntityTypeMapping TypeName="TestDbModelka.UrgencyType">
+            <EntityTypeMapping TypeName="TestDbContext.UrgencyType">
               <MappingFragment StoreEntitySet="UrgencyType">
                 <ScalarProperty Name="ut_id" ColumnName="ut_id" />
                 <ScalarProperty Name="ut_name" ColumnName="ut_name" />
@@ -766,7 +721,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserRole">
-            <EntityTypeMapping TypeName="TestDbModelka.UserRole">
+            <EntityTypeMapping TypeName="TestDbContext.UserRole">
               <MappingFragment StoreEntitySet="UserRole">
                 <ScalarProperty Name="ur_id" ColumnName="ur_id" />
                 <ScalarProperty Name="ur_name" ColumnName="ur_name" />

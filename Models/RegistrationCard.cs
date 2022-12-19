@@ -27,13 +27,11 @@ namespace PisFirst.Models
         public Nullable<int> anc_id { get; set; }
         public Nullable<int> apc_id { get; set; }
         public Nullable<int> as_id { get; set; }
-        public Nullable<int> mp_id { get; set; }
     
         public virtual AnimalCategory AnimalCategory { get; set; }
         public virtual ApplicantCategory ApplicantCategory { get; set; }
         public virtual ApplicationStatus ApplicationStatus { get; set; }
         public virtual AppUser AppUser { get; set; }
-        public virtual MunicipalDistrict MunicipalDistrict { get; set; }
         public virtual Omsu Omsu { get; set; }
         public virtual Organization Organization { get; set; }
         public virtual UrgencyType UrgencyType { get; set; }
