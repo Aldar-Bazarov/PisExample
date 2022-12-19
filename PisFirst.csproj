@@ -73,10 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ExportTools\ExportTools.cs" />
-    <Compile Include="Controllers\Authorization\Authorization.cs" />
-    <Compile Include="Controllers\Authorization\HashMD5.cs" />
-    <Compile Include="Controllers\Controllers.cs" />
+    <Compile Include="Controllers\DataController\DataController.cs" />
+    <Compile Include="Controllers\ExportToolsController\ExportToolsController.cs" />
+    <Compile Include="Controllers\AuthorizationController\AuthorizationController.cs" />
     <Compile Include="Models\AnimalCategory.cs">
       <DependentUpon>DbTestModel.tt</DependentUpon>
     </Compile>
@@ -122,6 +121,8 @@
     <Compile Include="Models\UserRole.cs">
       <DependentUpon>DbTestModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utils\HashMD5.cs" />
+    <Compile Include="Controllers\Controllers.cs" />
     <Compile Include="Views\AuthorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +148,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -172,8 +174,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel.png" />
     <Content Include="Models\DbTestModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DbTestModel.edmx</DependentUpon>
@@ -189,6 +194,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

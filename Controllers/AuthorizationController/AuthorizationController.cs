@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using System.Windows.Forms;
+using PisFirst.Controllers.Authorization;
 using PisFirst.Models;
 
-namespace PisFirst.Controllers.Authorization
+namespace PisFirst.Controllers.AuthorizationController
 {
     /// <summary>
     /// Контролллер авторизации пользователя
     /// </summary>
-    internal static class Authorization
+    internal static class AuthorizationController
     {
         /// <summary>
         /// Метод авторизации пользователя в системе
@@ -19,7 +20,7 @@ namespace PisFirst.Controllers.Authorization
         {
             var hashPassword = HashMD5.HashPassword(password);
 
-            var context = new labEntity();
+            var context = new TestDbModel();
 
             var users = context.AppUser.ToList();
 
@@ -30,7 +31,7 @@ namespace PisFirst.Controllers.Authorization
                 isExist = user.u_login == login && user.u_password == hashPassword;
             }
 
-            MessageBox.Show($"{context.AnimalCategory.Select(n => n).FirstOrDefault().anc_name}");
+            // MessageBox.Show($"{context.AnimalCategory.Select(n => n).FirstOrDefault().anc_name}");
             return isExist;
         }
     }

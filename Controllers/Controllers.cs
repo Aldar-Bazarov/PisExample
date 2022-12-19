@@ -34,17 +34,17 @@ namespace PisFirst.Controllers
             throw new NotImplementedException();
         }
 
-        public void ExportExcelRegistryRecords(params string[] filters)
+        public void ExportExcelRegistryRecords(string[] filters, string[] sorts)
         {
             throw new NotImplementedException();
         }
 
-        public void ExportExcelTrappingApplications(params string[] filters)
+        public void ExportExcelTrappingApplications(string[] filters, string[] sorts)
         {
             throw new NotImplementedException();
         }
 
-        public void ExportWordTrappingApplications(params string[] filters)
+        public void ExportWordTrappingApplications(string[] filters, string[] sorts)
         {
             throw new NotImplementedException();
         }

@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using OfficeOpenXml;
-using OfficeOpenXml.Style;
 using PisFirst.Models;
 
-namespace PisFirst.Controllers.ExportTools
+namespace PisFirst.Controllers.ExportToolsController
 {
-    internal static class ExportTools
+    internal static class ExportToolsController
     {
-        static labEntity context = new labEntity();
+        static TestDbModel context = new TestDbModel();
         public static void ExportExcelRegistryRecords(params string[] filters)
         {
             SaveFileDialog sfd = new SaveFileDialog();
@@ -29,6 +25,7 @@ namespace PisFirst.Controllers.ExportTools
                 var sheet = package.Workbook.Worksheets.Add("Лист 1");
                 var columnsList = new RegistrationCard().GetType().GetProperties();
                 sheet.Cells[1, 1].Value = "Дата подачи заявки";
+
                 sheet.Cells[1, 2].Value = "Номер заявки";
                 sheet.Cells[1, 3].Value = "Категория заявителя";
                 sheet.Cells[1, 4].Value = "Населенный пункт, на территории которого следует отловить животное";
@@ -51,31 +48,9 @@ namespace PisFirst.Controllers.ExportTools
                     sheet.Cells[i + 2, 7].Value = ds[i].UrgencyType.ut_name;
                     sheet.Cells[i + 2, 8].Value = ds[i].Organization == null ? "" : ds[i].Organization.or_name;
                     sheet.Cells[i + 2, 9].Value = ds[i].ApplicationStatus.as_name;
+                    sheet.Cells[i + 2, 10].Value = Convert.ToDateTime(ds[i].as_changedate).ToString(CultureInfo.CurrentCulture);
 
                 }
-                // var wf = RegistrationCard
-                // ExcelRange firstCell = sheet.Cells[1, 1];
-                // firstCell.Value = "will it work?";
-                // sheet.Cells["A2"].Formula = "CONCATENATE(A1,\" ... Of course it will!\")";
-                //
-                // // Numbers
-                // var moneyCell = sheet.Cells["A3"];
-                // moneyCell.Style.Numberformat.Format = "$#,##0.00";
-                // moneyCell.Value = 15.25M;
-                //
-                // // Easily write any Enumerable to a sheet
-                // // In this case: All Excel functions implemented by EPPlus
-                // var funcs = package.Workbook.FormulaParserManager.GetImplementedFunctions()
-                //     .Select(x => new { FunctionName = x.Key, TypeName = x.Value.GetType().FullName });
-                // sheet.Cells["A4"].LoadFromCollection(funcs, true);
-                //
-                // // Styling cells
-                // var someCells = sheet.Cells["A1,A4:B4"];
-                // someCells.Style.Font.Bold = true;
-                // someCells.Style.Font.Color.SetColor(Color.Ivory);
-                // someCells.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                // someCells.Style.Fill.BackgroundColor.SetColor(Color.Navy);
-
                 sheet.Cells.AutoFitColumns();
                 package.SaveAs(new FileInfo(path));
             }

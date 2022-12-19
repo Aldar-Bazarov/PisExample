@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using PisFirst.Controllers.Authorization;
+using PisFirst.Controllers.AuthorizationController;
 
 namespace PisFirst.Views
 {
@@ -43,7 +44,7 @@ namespace PisFirst.Views
                 return;
             }
 
-            var isExist = Authorization.Authorize(textBox_login.Text, textBox_password.Text);
+            var isExist = AuthorizationController.Authorize(textBox_login.Text, textBox_password.Text);
 
             if (isExist)
             {
