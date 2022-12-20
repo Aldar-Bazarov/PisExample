@@ -79,5 +79,11 @@ namespace PisFirst.Views
             FillDGW();
             ExportToolsController.ExportExcelRegistryRecords();
         }
+
+        private void btnViewJournal_Click(object sender, EventArgs e)
+        {
+            JournalForm jf = new JournalForm();
+            jf.Show();
+        }
     }
 }

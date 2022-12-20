@@ -509,6 +509,7 @@
             this.btnViewJournal.TabIndex = 12;
             this.btnViewJournal.Text = "Форма журнала";
             this.btnViewJournal.UseVisualStyleBackColor = true;
+            this.btnViewJournal.Click += new System.EventHandler(this.btnViewJournal_Click);
             // 
             // bindingNavigator1
             // 
