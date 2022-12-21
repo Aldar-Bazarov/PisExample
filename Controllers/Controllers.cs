@@ -49,9 +49,9 @@ namespace PisFirst.Controllers
             throw new NotImplementedException();
         }
 
-        public void FilterRecords(string[] filters, string[] sorts)
-        {
-            throw new NotImplementedException();
-        }
+        // public void FilterRecords(string[] filters, string[] sorts)
+        // {
+        //     throw new NotImplementedException();
+        // }
     }
 }

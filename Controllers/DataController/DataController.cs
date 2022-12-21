@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Media.Animation;
 using PisFirst.Models;
 
 namespace PisFirst.Controllers.DataController
@@ -19,5 +21,11 @@ namespace PisFirst.Controllers.DataController
 
         public DbSet<RegistrationCard> GetRegistryData() => db.RegistrationCard;
 
+        // public ComboBox getComboBoxSourceFromDb(ComboBox comboBox)
+        // {
+        //     var column = comboBox.Items[0].ToString();
+        //     // if 
+        //     // return 
+        // }
     }
 }

@@ -25,7 +25,14 @@ namespace PisFirst.Views
         public MainForm()
         {
             InitializeComponent();
-            
+            FillComboBox(reg_cardCombo);
+            FillComboBox(aplCategoryCombo);
+            FillComboBox(distrCombo);
+            FillComboBox(locationCombo);
+            FillComboBox(animalCategoryCombo);
+            FillComboBox(urgencyCombo);
+            FillComboBox(orgCombo);
+            FillComboBox(statusCombo);
         }
 
         /// <summary>
@@ -40,12 +47,23 @@ namespace PisFirst.Views
 
         private void FillDGW()
         {
+            
             var registryBindingSource = new BindingSource();
             var registryDataController = new DataController();
-            registryBindingSource.DataSource = registryDataController.GetRegistryData();
+            var registyData = registryDataController.GetRegistryData();
+            registryBindingSource.DataSource = registyData.ToList();
             registyDGW.DataSource = registryBindingSource;
-            AdjustColumnNames();
+            bindingNavigator1.BindingSource = registryBindingSource;
+            // AdjustColumnNames();
             registyDGW.Refresh();
+        }
+
+        private void FillComboBox(ComboBox comboBox)
+        {
+            var dataController = new DataController();
+            string columnName = comboBox.Items[0].ToString();
+            // comboBox = dataController.getComboBoxSourceFromDb(comboBox);
+            // comboBox.Items.Clear();
         }
 
         private void AdjustColumnNames()
@@ -54,7 +72,7 @@ namespace PisFirst.Views
             InsertColumn(registyDGW.Columns["rc_application_date"], 0);
 
             registyDGW.Columns["rc_id"].HeaderText = registyDGW.Columns[1].HeaderText;
-            InsertColumn(registyDGW.Columns["rc_id"],1);
+          
 
             registyDGW.Columns["rc_id"].HeaderText = registyDGW.Columns[1].HeaderText;
             InsertColumn(registyDGW.Columns["rc_id"], 1);
@@ -77,7 +95,7 @@ namespace PisFirst.Views
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
             FillDGW();
-            ExportToolsController.ExportExcelRegistryRecords();
+            // ExportToolsController.ExportExcelRegistryRecords();
         }
 
         private void btnViewJournal_Click(object sender, EventArgs e)
