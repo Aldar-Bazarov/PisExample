@@ -16,7 +16,7 @@ namespace PisFirst.Models
     public partial class TestDbContext : DbContext
     {
         public TestDbContext()
-            : base("name=TestDbContext")
+            : base("name=TestDbModel")
         {
         }
     

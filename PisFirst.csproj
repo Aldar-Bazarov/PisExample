@@ -58,53 +58,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\AnimalCategory.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ApplicantCategory.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ApplicationStatus.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AppUser.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\Authorization\Authorization.cs" />
     <Compile Include="Controllers\Authorization\HashMD5.cs" />
-    <Compile Include="Controllers\Controllers.cs" />
-    <Compile Include="Models\DbTestModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbTestModel.Context.tt</DependentUpon>
+    <Compile Include="Controllers\Records\RecordsCRUD.cs" />
+    <Compile Include="Models\AnimalCategory.cs">
+      <DependentUpon>TestDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbTestModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbTestModel.tt</DependentUpon>
+    <Compile Include="Models\ApplicantCategory.cs">
+      <DependentUpon>TestDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbTestModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbTestModel.edmx</DependentUpon>
+    <Compile Include="Models\ApplicationStatus.cs">
+      <DependentUpon>TestDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppUser.cs">
+      <DependentUpon>TestDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MunicipalDistrict.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
+      <DependentUpon>TestDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Omsu.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
+      <DependentUpon>TestDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Organization.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
+      <DependentUpon>TestDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RegistrationCard.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
+      <DependentUpon>TestDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\UrgencyType.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
+      <DependentUpon>TestDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserRole.cs">
-      <DependentUpon>DbTestModel.tt</DependentUpon>
+      <DependentUpon>TestDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\AuthorizationForm.cs">
       <SubType>Form</SubType>
@@ -119,6 +119,12 @@
     </Compile>
     <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrationCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RegistrationCardForm.Designer.cs">
+      <DependentUpon>RegistrationCardForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Views\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
@@ -135,12 +141,15 @@
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\DbTestModel.edmx">
+    <EmbeddedResource Include="Views\RegistrationCardForm.resx">
+      <DependentUpon>RegistrationCardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\TestDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbTestModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>TestDbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\DbTestModel.edmx.diagram">
-      <DependentUpon>DbTestModel.edmx</DependentUpon>
+    <None Include="Models\TestDbModel.edmx.diagram">
+      <DependentUpon>TestDbModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -158,15 +167,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Models\DbTestModel.Context.tt">
+    <Content Include="Models\TestDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbTestModel.Context.cs</LastGenOutput>
-      <DependentUpon>DbTestModel.edmx</DependentUpon>
+      <DependentUpon>TestDbModel.edmx</DependentUpon>
+      <LastGenOutput>TestDbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DbTestModel.tt">
+    <Content Include="Models\TestDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbTestModel.edmx</DependentUpon>
-      <LastGenOutput>DbTestModel.cs</LastGenOutput>
+      <DependentUpon>TestDbModel.edmx</DependentUpon>
+      <LastGenOutput>TestDbModel.cs</LastGenOutput>
     </Content>
     <Content Include="Views\Assets\auth.ico" />
   </ItemGroup>

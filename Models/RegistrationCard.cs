@@ -10,7 +10,8 @@
 namespace PisFirst.Models
 {
     using System;
-
+    using System.Collections.Generic;
+    
     public partial class RegistrationCard
     {
         public int rc_id { get; set; }
@@ -26,6 +27,7 @@ namespace PisFirst.Models
         public Nullable<int> anc_id { get; set; }
         public Nullable<int> apc_id { get; set; }
         public Nullable<int> as_id { get; set; }
+        public System.DateTime as_changedate { get; set; }
     
         public virtual AnimalCategory AnimalCategory { get; set; }
         public virtual ApplicantCategory ApplicantCategory { get; set; }

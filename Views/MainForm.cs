@@ -1,4 +1,5 @@
-﻿using PisFirst.Controllers.CRUD;
+﻿//using PisFirst.Controllers.CRUD;
+using PisFirst.Controllers.Records;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -17,7 +18,7 @@ namespace PisFirst.Views
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            //this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         /// <summary>
@@ -73,7 +74,9 @@ namespace PisFirst.Views
         /// <param name="dgv">dataGridView, которую нужно заполнить</param>
         private void FillRows(DataGridView dgv)
         {
-            List<string[]> records = RegistrationCardCRUD.ReadData();
+            dgv.Rows.Clear();
+
+            List<string[]> records = RecordsCRUD.ReadRecords();
 
             foreach (var record in records)
             {
@@ -81,6 +84,52 @@ namespace PisFirst.Views
                              record[5], record[6], record[7], record[8], record[9],
                              record[10], record[11], record[12]);
             }
+        }
+
+        /// <summary>
+        /// Добавления записи в реестр
+        /// </summary>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы события </param>
+        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
+        private void addRecordButton_Click(object sender, EventArgs e)
+        {
+            using (var addRecordForm = new RegistrationCardForm(false))
+            {
+                addRecordForm.Show();
+                //if (addRecordForm.ShowDialog() != DialogResult.OK)
+                //{
+                //    throw new Exception("Не удалось открыть окно добавления записи");
+                //}
+            }
+        }
+
+        /// <summary>
+        /// Просмотр карточки реестра
+        /// </summary>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы события </param>
+        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
+        private void showRegistrationCard_Click(object sender, EventArgs e)
+        {
+            using (var addRecordForm = new RegistrationCardForm(true))
+            {
+                if (addRecordForm.ShowDialog() != DialogResult.OK)
+                {
+                    throw new Exception("Не удалось открыть окно добавления записи");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Изменение записи в реестре
+        /// </summary>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы события </param>
+        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
+        private void changeRecordButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
