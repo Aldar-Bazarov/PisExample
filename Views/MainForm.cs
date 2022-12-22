@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PisFirst.Controllers.ExportToolsController;
 using PisFirst.Controllers.DataController;
 using PisFirst.Models;
+using PisFirst.Controllers.showController;
 
 namespace PisFirst.Views
 {
@@ -42,7 +43,7 @@ namespace PisFirst.Views
         {
             var registryBindingSource = new BindingSource();
             var registryDataController = new DataController();
-            registryBindingSource.DataSource = registryDataController.GetRegistryData();
+            registryBindingSource.DataSource = registryDataController.GetRegistryData().ToList();
             registyDGW.DataSource = registryBindingSource;
             AdjustColumnNames();
             registyDGW.Refresh();
@@ -84,6 +85,17 @@ namespace PisFirst.Views
         {
             JournalForm jf = new JournalForm();
             jf.Show();
+        }
+
+        private void btnViewRegCard_Click(object sender, EventArgs e)
+        {
+            if (registyDGW.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Запись не выбрана!");
+                return;
+            }
+            ShowRecordCard.ShowRegistrationCard(registyDGW.CurrentRow.Cells[2].Value.ToString());
+
         }
     }
 }

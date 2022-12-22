@@ -10,7 +10,7 @@ namespace PisFirst.Controllers.ExportToolsController
 {
     internal static class ExportToolsController
     {
-        static TestDbModel context = new TestDbModel();
+        static lab5 context = new lab5();
         public static void ExportExcelRegistryRecords(params string[] filters)
         {
             SaveFileDialog sfd = new SaveFileDialog();

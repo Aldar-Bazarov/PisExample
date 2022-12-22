@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DbTestModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище DbTestModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AnimalCategory">
           <Key>
             <PropertyRef Name="anc_id" />
@@ -96,7 +96,7 @@
           <Property Name="ur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ur_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__AppUser__om_id__2F10007B">
+        <Association Name="FK__AppUser__om_id__4222D4EF">
           <End Role="Omsu" Type="Self.Omsu" Multiplicity="0..1" />
           <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -108,7 +108,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AppUser__or_id__300424B4">
+        <Association Name="FK__AppUser__or_id__4316F928">
           <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
           <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -120,7 +120,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AppUser__ur_id__2E1BDC42">
+        <Association Name="FK__AppUser__ur_id__412EB0B6">
           <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
           <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -132,7 +132,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Omsu__md_id__267ABA7A">
+        <Association Name="FK__Omsu__md_id__398D8EEE">
           <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1" />
           <End Role="Omsu" Type="Self.Omsu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -144,7 +144,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Organizat__md_id__29572725">
+        <Association Name="FK__Organizat__md_id__3C69FB99">
           <End Role="MunicipalDistrict" Type="Self.MunicipalDistrict" Multiplicity="0..1" />
           <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,7 +156,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__anc_i__3E52440B">
+        <Association Name="FK__Registrat__anc_i__5165187F">
           <End Role="AnimalCategory" Type="Self.AnimalCategory" Multiplicity="0..1" />
           <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +168,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__apc_i__3F466844">
+        <Association Name="FK__Registrat__apc_i__52593CB8">
           <End Role="ApplicantCategory" Type="Self.ApplicantCategory" Multiplicity="0..1" />
           <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,7 +180,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__as_id__403A8C7D">
+        <Association Name="FK__Registrat__as_id__534D60F1">
           <End Role="ApplicationStatus" Type="Self.ApplicationStatus" Multiplicity="0..1" />
           <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -192,7 +192,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__om_id__3B75D760">
+        <Association Name="FK__Registrat__om_id__4E88ABD4">
           <End Role="Omsu" Type="Self.Omsu" Multiplicity="0..1" />
           <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,7 +204,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__or_id__3C69FB99">
+        <Association Name="FK__Registrat__or_id__4F7CD00D">
           <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
           <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,7 +216,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrat__ut_id__3D5E1FD2">
+        <Association Name="FK__Registrat__ut_id__5070F446">
           <End Role="UrgencyType" Type="Self.UrgencyType" Multiplicity="0..1" />
           <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +228,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Registrati__u_id__3A81B327">
+        <Association Name="FK__Registrati__u_id__4D94879B">
           <End Role="AppUser" Type="Self.AppUser" Multiplicity="0..1" />
           <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -251,57 +251,56 @@
           <EntitySet Name="RegistrationCard" EntityType="Self.RegistrationCard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UrgencyType" EntityType="Self.UrgencyType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AppUser__om_id__2F10007B" Association="Self.FK__AppUser__om_id__2F10007B">
+          <AssociationSet Name="FK__AppUser__om_id__4222D4EF" Association="Self.FK__AppUser__om_id__4222D4EF">
             <End Role="Omsu" EntitySet="Omsu" />
             <End Role="AppUser" EntitySet="AppUser" />
           </AssociationSet>
-          <AssociationSet Name="FK__AppUser__or_id__300424B4" Association="Self.FK__AppUser__or_id__300424B4">
+          <AssociationSet Name="FK__AppUser__or_id__4316F928" Association="Self.FK__AppUser__or_id__4316F928">
             <End Role="Organization" EntitySet="Organization" />
             <End Role="AppUser" EntitySet="AppUser" />
           </AssociationSet>
-          <AssociationSet Name="FK__AppUser__ur_id__2E1BDC42" Association="Self.FK__AppUser__ur_id__2E1BDC42">
+          <AssociationSet Name="FK__AppUser__ur_id__412EB0B6" Association="Self.FK__AppUser__ur_id__412EB0B6">
             <End Role="UserRole" EntitySet="UserRole" />
             <End Role="AppUser" EntitySet="AppUser" />
           </AssociationSet>
-          <AssociationSet Name="FK__Omsu__md_id__267ABA7A" Association="Self.FK__Omsu__md_id__267ABA7A">
+          <AssociationSet Name="FK__Omsu__md_id__398D8EEE" Association="Self.FK__Omsu__md_id__398D8EEE">
             <End Role="MunicipalDistrict" EntitySet="MunicipalDistrict" />
             <End Role="Omsu" EntitySet="Omsu" />
           </AssociationSet>
-          <AssociationSet Name="FK__Organizat__md_id__29572725" Association="Self.FK__Organizat__md_id__29572725">
+          <AssociationSet Name="FK__Organizat__md_id__3C69FB99" Association="Self.FK__Organizat__md_id__3C69FB99">
             <End Role="MunicipalDistrict" EntitySet="MunicipalDistrict" />
             <End Role="Organization" EntitySet="Organization" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__anc_i__3E52440B" Association="Self.FK__Registrat__anc_i__3E52440B">
+          <AssociationSet Name="FK__Registrat__anc_i__5165187F" Association="Self.FK__Registrat__anc_i__5165187F">
             <End Role="AnimalCategory" EntitySet="AnimalCategory" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__apc_i__3F466844" Association="Self.FK__Registrat__apc_i__3F466844">
+          <AssociationSet Name="FK__Registrat__apc_i__52593CB8" Association="Self.FK__Registrat__apc_i__52593CB8">
             <End Role="ApplicantCategory" EntitySet="ApplicantCategory" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__as_id__403A8C7D" Association="Self.FK__Registrat__as_id__403A8C7D">
+          <AssociationSet Name="FK__Registrat__as_id__534D60F1" Association="Self.FK__Registrat__as_id__534D60F1">
             <End Role="ApplicationStatus" EntitySet="ApplicationStatus" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__om_id__3B75D760" Association="Self.FK__Registrat__om_id__3B75D760">
+          <AssociationSet Name="FK__Registrat__om_id__4E88ABD4" Association="Self.FK__Registrat__om_id__4E88ABD4">
             <End Role="Omsu" EntitySet="Omsu" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__or_id__3C69FB99" Association="Self.FK__Registrat__or_id__3C69FB99">
+          <AssociationSet Name="FK__Registrat__or_id__4F7CD00D" Association="Self.FK__Registrat__or_id__4F7CD00D">
             <End Role="Organization" EntitySet="Organization" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrat__ut_id__3D5E1FD2" Association="Self.FK__Registrat__ut_id__3D5E1FD2">
+          <AssociationSet Name="FK__Registrat__ut_id__5070F446" Association="Self.FK__Registrat__ut_id__5070F446">
             <End Role="UrgencyType" EntitySet="UrgencyType" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Registrati__u_id__3A81B327" Association="Self.FK__Registrati__u_id__3A81B327">
+          <AssociationSet Name="FK__Registrati__u_id__4D94879B" Association="Self.FK__Registrati__u_id__4D94879B">
             <End Role="AppUser" EntitySet="AppUser" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

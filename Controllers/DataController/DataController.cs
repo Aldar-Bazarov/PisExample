@@ -10,7 +10,7 @@ namespace PisFirst.Controllers.DataController
 {
     public class DataController
     {
-        private TestDbModel db = new TestDbModel();
+        private lab5 db = new lab5();
 
         public void FilterRecords(string[] filters, string[] sorts)
         {

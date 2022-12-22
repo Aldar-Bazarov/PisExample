@@ -20,7 +20,7 @@ namespace PisFirst.Controllers.AuthorizationController
         {
             var hashPassword = HashMD5.HashPassword(password);
 
-            var context = new TestDbModel();
+            var context = new lab5();
 
             var users = context.AppUser.ToList();
 

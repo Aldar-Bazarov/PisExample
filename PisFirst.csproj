@@ -76,6 +76,8 @@
     <Compile Include="Controllers\DataController\DataController.cs" />
     <Compile Include="Controllers\ExportToolsController\ExportToolsController.cs" />
     <Compile Include="Controllers\AuthorizationController\AuthorizationController.cs" />
+    <Compile Include="Controllers\ShowsController\GetFormatJournalRecords.cs" />
+    <Compile Include="Controllers\ShowsController\ShowRecordCard.cs" />
     <Compile Include="Models\AnimalCategory.cs">
       <DependentUpon>DbTestModel.tt</DependentUpon>
     </Compile>
@@ -143,6 +145,12 @@
     <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\RecordCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RecordCard.Designer.cs">
+      <DependentUpon>RecordCard.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +168,9 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\JournalForm.resx" />
+    <EmbeddedResource Include="Views\RecordCard.resx">
+      <DependentUpon>RecordCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Models\DbTestModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DbTestModel.Designer.cs</LastGenOutput>
