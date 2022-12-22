@@ -16,10 +16,7 @@ namespace PisFirst.Controllers.showController
             var selectedCards = new List<RegistrationCard>();
             if (filters.Length != 0)
             {
-                foreach (var item in filters)
-                {
-
-                }
+                
             }
             selectedCards = cardsList;
 

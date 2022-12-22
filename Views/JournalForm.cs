@@ -16,5 +16,10 @@ namespace PisFirst.Views
         {
             InitializeComponent();
         }
+
+        private void JournalForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -17,8 +17,6 @@ namespace PisFirst.Views
         RegistrationCard _registrationCard;
         public RecordCard(RegistrationCard registrationCard)
         {
-            //idLabel.Text = registrationCard.rc_id.ToString();
-            //this.dataGridView1.Rows.Add(registrationCard);
             _registrationCard = registrationCard;
             InitializeComponent();
         }
@@ -27,7 +25,13 @@ namespace PisFirst.Views
 
         private void RecordCard_Load(object sender, EventArgs e)
         {
-
+            zayavkaId.Text = _registrationCard.rc_id.ToString();
+            category.Text = _registrationCard.ApplicantCategory.ToString();
+            town.Text = "hz";
+            animalCategory.Text = _registrationCard.AnimalCategory.ToString();
+            urgency.Text = _registrationCard.UrgencyType.ToString();
+            organization.Text = _registrationCard.Organization.ToString();
+            zayavkaStatus.Text = _registrationCard.ApplicationStatus.ToString();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
