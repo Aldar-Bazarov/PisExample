@@ -44,7 +44,7 @@ namespace PisFirst.Views
                 return;
             }
 
-            var isExist = AuthorizationController.Authorize(textBox_login.Text, textBox_password.Text);
+            var isExist = UserController.Authorize(textBox_login.Text, textBox_password.Text);
 
             if (isExist)
             {

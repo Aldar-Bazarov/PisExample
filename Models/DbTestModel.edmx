@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DbTestModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище TestDbContext" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AnimalCategory">
           <Key>
             <PropertyRef Name="anc_id" />
@@ -240,7 +240,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище DbTestModelContainer">
+        <EntityContainer Name="Хранилище TestDbContextContainer">
           <EntitySet Name="AnimalCategory" EntityType="Self.AnimalCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantCategory" EntityType="Self.ApplicantCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicationStatus" EntityType="Self.ApplicationStatus" Schema="dbo" store:Type="Tables" />
@@ -304,7 +304,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DbTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="TestDbContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AnimalCategory">
           <Key>
             <PropertyRef Name="anc_id" />
@@ -564,7 +564,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="lab5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TestDbModel" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AnimalCategory" EntityType="Self.AnimalCategory" />
           <EntitySet Name="ApplicantCategory" EntityType="Self.ApplicantCategory" />
           <EntitySet Name="ApplicationStatus" EntityType="Self.ApplicationStatus" />
@@ -629,9 +629,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище DbTestModelContainer" CdmEntityContainer="lab5">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TestDbContextContainer" CdmEntityContainer="TestDbModel">
           <EntitySetMapping Name="AnimalCategory">
-            <EntityTypeMapping TypeName="DbTestModel.AnimalCategory">
+            <EntityTypeMapping TypeName="TestDbContext.AnimalCategory">
               <MappingFragment StoreEntitySet="AnimalCategory">
                 <ScalarProperty Name="anc_id" ColumnName="anc_id" />
                 <ScalarProperty Name="anc_name" ColumnName="anc_name" />
@@ -639,7 +639,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantCategory">
-            <EntityTypeMapping TypeName="DbTestModel.ApplicantCategory">
+            <EntityTypeMapping TypeName="TestDbContext.ApplicantCategory">
               <MappingFragment StoreEntitySet="ApplicantCategory">
                 <ScalarProperty Name="apc_id" ColumnName="apc_id" />
                 <ScalarProperty Name="apc_name" ColumnName="apc_name" />
@@ -647,7 +647,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicationStatus">
-            <EntityTypeMapping TypeName="DbTestModel.ApplicationStatus">
+            <EntityTypeMapping TypeName="TestDbContext.ApplicationStatus">
               <MappingFragment StoreEntitySet="ApplicationStatus">
                 <ScalarProperty Name="as_id" ColumnName="as_id" />
                 <ScalarProperty Name="as_name" ColumnName="as_name" />
@@ -655,7 +655,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AppUser">
-            <EntityTypeMapping TypeName="DbTestModel.AppUser">
+            <EntityTypeMapping TypeName="TestDbContext.AppUser">
               <MappingFragment StoreEntitySet="AppUser">
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
                 <ScalarProperty Name="u_first_name" ColumnName="u_first_name" />
@@ -670,7 +670,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MunicipalDistrict">
-            <EntityTypeMapping TypeName="DbTestModel.MunicipalDistrict">
+            <EntityTypeMapping TypeName="TestDbContext.MunicipalDistrict">
               <MappingFragment StoreEntitySet="MunicipalDistrict">
                 <ScalarProperty Name="md_id" ColumnName="md_id" />
                 <ScalarProperty Name="md_name" ColumnName="md_name" />
@@ -678,7 +678,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Omsu">
-            <EntityTypeMapping TypeName="DbTestModel.Omsu">
+            <EntityTypeMapping TypeName="TestDbContext.Omsu">
               <MappingFragment StoreEntitySet="Omsu">
                 <ScalarProperty Name="om_id" ColumnName="om_id" />
                 <ScalarProperty Name="om_name" ColumnName="om_name" />
@@ -687,7 +687,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Organization">
-            <EntityTypeMapping TypeName="DbTestModel.Organization">
+            <EntityTypeMapping TypeName="TestDbContext.Organization">
               <MappingFragment StoreEntitySet="Organization">
                 <ScalarProperty Name="or_id" ColumnName="or_id" />
                 <ScalarProperty Name="or_name" ColumnName="or_name" />
@@ -696,7 +696,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RegistrationCard">
-            <EntityTypeMapping TypeName="DbTestModel.RegistrationCard">
+            <EntityTypeMapping TypeName="TestDbContext.RegistrationCard">
               <MappingFragment StoreEntitySet="RegistrationCard">
                 <ScalarProperty Name="rc_id" ColumnName="rc_id" />
                 <ScalarProperty Name="rc_application_date" ColumnName="rc_application_date" />
@@ -716,7 +716,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UrgencyType">
-            <EntityTypeMapping TypeName="DbTestModel.UrgencyType">
+            <EntityTypeMapping TypeName="TestDbContext.UrgencyType">
               <MappingFragment StoreEntitySet="UrgencyType">
                 <ScalarProperty Name="ut_id" ColumnName="ut_id" />
                 <ScalarProperty Name="ut_name" ColumnName="ut_name" />
@@ -724,7 +724,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserRole">
-            <EntityTypeMapping TypeName="DbTestModel.UserRole">
+            <EntityTypeMapping TypeName="TestDbContext.UserRole">
               <MappingFragment StoreEntitySet="UserRole">
                 <ScalarProperty Name="ur_id" ColumnName="ur_id" />
                 <ScalarProperty Name="ur_name" ColumnName="ur_name" />

@@ -33,7 +33,7 @@ namespace PisFirst.Views
                 appUserTextBox.Text = "Сотрудник"; // доделать
                 applicationTextBox.Text = "Зарегистрировано";
 
-                ComboBox[] comboBoxes = new ComboBox[]
+                ComboBox[] comboBoxes = new[]
                 {
                     omsuComboBox,
                     organizationComboBox,
@@ -42,7 +42,7 @@ namespace PisFirst.Views
                     applicantCategoryComboBox
                 };
 
-                RecordsCRUD.FillComboBoxes(comboBoxes);
+                RecordsController.FillComboBoxes(comboBoxes);
             }
         }
 
@@ -62,8 +62,13 @@ namespace PisFirst.Views
                 applicantCategoryComboBox.SelectedValue.ToString(),
             };
 
-            RecordsCRUD.CreateRecord(values);
+            RecordsController.CreateRecord(values);
 
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

@@ -33,29 +33,7 @@ namespace PisFirst.Views
             this.WindowState = FormWindowState.Maximized;
         }
 
-        /// <summary>
-        /// Событие срабатывающее при загрузке формы
-        /// </summary>
-        /// <param name="sender">Инициатор</param>
-        /// <param name="e">Аргументы события</param>
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            FillDGW();
-        }
-
-        private void FillDGW()
-        {
-            
-            var registryBindingSource = new BindingSource();
-            var registryDataController = new DataController();
-            var registyData = registryDataController.GetRegistryData();
-            registryBindingSource.DataSource = registyData.ToList();
-            registyDGW.DataSource = registryBindingSource;
-            bindingNavigator1.BindingSource = registryBindingSource;
-            // AdjustColumnNames();
-            registyDGW.Refresh();
-        }
-
+        
         private void FillComboBox(ComboBox comboBox)
         {
             var dataController = new DataController();
@@ -140,7 +118,7 @@ namespace PisFirst.Views
         {
             dgv.Rows.Clear();
 
-            List<string[]> records = RecordsCRUD.ReadRecords();
+            List<string[]> records = RecordsController.ReadRecords();
 
             foreach (var record in records)
             {
@@ -156,16 +134,15 @@ namespace PisFirst.Views
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
         /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-        private void addRecordButton_Click(object sender, EventArgs e)
+        private void btnAddRegCard_Click(object sender, EventArgs e)
         {
-            using (var addRecordForm = new RegistrationCardForm(false))
-            {
-                addRecordForm.Show();
+            var addRecordForm = new RegistrationCardForm(false);
+            addRecordForm.Show();
                 //if (addRecordForm.ShowDialog() != DialogResult.OK)
                 //{
                 //    throw new Exception("Не удалось открыть окно добавления записи");
                 //}
-            }
+            
         }
 
         /// <summary>
@@ -174,7 +151,7 @@ namespace PisFirst.Views
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
         /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-        private void showRegistrationCard_Click(object sender, EventArgs e)
+        private void btnViewRegCard_Click(object sender, EventArgs e)
         {
             using (var addRecordForm = new RegistrationCardForm(true))
             {
@@ -191,9 +168,11 @@ namespace PisFirst.Views
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
         /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-        private void changeRecordButton_Click(object sender, EventArgs e)
+        private void btnEditRegCard_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
+
+     
     }
 }

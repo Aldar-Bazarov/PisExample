@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace PisFirst.Controllers.Records
 {
-    internal static class RecordsCRUD
+    internal static class RecordsController
     {
         public static List<string[]> ReadRecords()
         {
-            using (var context = new TestDbContext())
+            using (var context = new TestDbModel())
             {
                 var resultList = new List<string[]>();
              
@@ -39,10 +39,10 @@ namespace PisFirst.Controllers.Records
                     {
                         record.rc_id.ToString(),
                         record.rc_application_date.ToString(),
-                        record.rc_animal_habitat.ToString(),
-                        record.rc_capture_reason.ToString(),
+                        record.rc_animal_habitat,
+                        record.rc_capture_reason,
                         record.rc_signing_date.ToString(),
-                        record.rc_signature.ToString(),
+                        record.rc_signature,
                         userName,
                         organizationName,
                         omsuName,
@@ -59,7 +59,7 @@ namespace PisFirst.Controllers.Records
 
         public static void CreateRecord(string[] values)
         {
-            using (var context = new TestDbContext())
+            using (var context = new TestDbModel())
             {
 
                 var newCard = new RegistrationCard()
@@ -91,7 +91,7 @@ namespace PisFirst.Controllers.Records
 
         public static void FillComboBoxes(ComboBox[] comboBoxes)
         {
-            using (var context = new TestDbContext())
+            using (var context = new TestDbModel())
             {
                 comboBoxes[0].ValueMember = "om_id";
                 comboBoxes[0].DisplayMember = "om_name";

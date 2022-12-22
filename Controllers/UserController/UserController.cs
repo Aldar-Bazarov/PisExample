@@ -8,7 +8,7 @@ namespace PisFirst.Controllers.AuthorizationController
     /// <summary>
     /// Контролллер авторизации пользователя
     /// </summary>
-    internal static class AuthorizationController
+    internal static class UserController
     {
         /// <summary>
         /// Метод авторизации пользователя в системе
