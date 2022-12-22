@@ -1,11 +1,13 @@
 ﻿using PisFirst.Views;
 using System;
 using System.Windows.Forms;
+using PisFirst.Utils;
 
 namespace PisFirst
 {
     internal static class Program
     {
+        public static AuthSession AuthSession;
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -18,4 +20,6 @@ namespace PisFirst
             Application.Run(new MainForm());
         }
     }
+
+   
 }

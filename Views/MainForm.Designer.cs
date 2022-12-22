@@ -38,7 +38,6 @@
             this.dtPickerEnd = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
             this.orgCombo = new System.Windows.Forms.ComboBox();
-            this.locationCombo = new System.Windows.Forms.ComboBox();
             this.distrCombo = new System.Windows.Forms.ComboBox();
             this.reg_cardCombo = new System.Windows.Forms.ComboBox();
             this.btnApplyFilters = new System.Windows.Forms.Button();
@@ -50,7 +49,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.animalCategoryCombo = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.aplCategoryCombo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -80,7 +78,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -92,7 +89,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -162,7 +158,6 @@
             this.groupBox1.Controls.Add(this.dtPickerEnd);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.orgCombo);
-            this.groupBox1.Controls.Add(this.locationCombo);
             this.groupBox1.Controls.Add(this.distrCombo);
             this.groupBox1.Controls.Add(this.reg_cardCombo);
             this.groupBox1.Controls.Add(this.btnApplyFilters);
@@ -174,7 +169,6 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.animalCategoryCombo);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.aplCategoryCombo);
             this.groupBox1.Controls.Add(this.label6);
@@ -211,20 +205,10 @@
             this.orgCombo.FormattingEnabled = true;
             this.orgCombo.Items.AddRange(new object[] {
             "or_id"});
-            this.orgCombo.Location = new System.Drawing.Point(182, 252);
+            this.orgCombo.Location = new System.Drawing.Point(182, 228);
             this.orgCombo.Name = "orgCombo";
             this.orgCombo.Size = new System.Drawing.Size(200, 24);
             this.orgCombo.TabIndex = 32;
-            // 
-            // locationCombo
-            // 
-            this.locationCombo.FormattingEnabled = true;
-            this.locationCombo.Items.AddRange(new object[] {
-            "rc_animal_habitat"});
-            this.locationCombo.Location = new System.Drawing.Point(182, 162);
-            this.locationCombo.Name = "locationCombo";
-            this.locationCombo.Size = new System.Drawing.Size(200, 24);
-            this.locationCombo.TabIndex = 31;
             // 
             // distrCombo
             // 
@@ -255,6 +239,7 @@
             this.btnApplyFilters.TabIndex = 12;
             this.btnApplyFilters.Text = "Применить";
             this.btnApplyFilters.UseVisualStyleBackColor = true;
+            this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
             // btnClearFilters
             // 
@@ -265,12 +250,13 @@
             this.btnClearFilters.TabIndex = 10;
             this.btnClearFilters.Text = "Очистить";
             this.btnClearFilters.UseVisualStyleBackColor = true;
+            this.btnClearFilters.Click += new System.EventHandler(this.btnClearFilters_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(6, 283);
+            this.label12.Location = new System.Drawing.Point(6, 267);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(142, 15);
             this.label12.TabIndex = 28;
@@ -280,7 +266,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(6, 255);
+            this.label11.Location = new System.Drawing.Point(2, 231);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(146, 15);
             this.label11.TabIndex = 27;
@@ -291,7 +277,7 @@
             this.statusCombo.FormattingEnabled = true;
             this.statusCombo.Items.AddRange(new object[] {
             "as_id"});
-            this.statusCombo.Location = new System.Drawing.Point(182, 280);
+            this.statusCombo.Location = new System.Drawing.Point(182, 258);
             this.statusCombo.Name = "statusCombo";
             this.statusCombo.Size = new System.Drawing.Size(200, 24);
             this.statusCombo.TabIndex = 26;
@@ -301,7 +287,7 @@
             this.urgencyCombo.FormattingEnabled = true;
             this.urgencyCombo.Items.AddRange(new object[] {
             "ut_id"});
-            this.urgencyCombo.Location = new System.Drawing.Point(182, 222);
+            this.urgencyCombo.Location = new System.Drawing.Point(182, 198);
             this.urgencyCombo.Name = "urgencyCombo";
             this.urgencyCombo.Size = new System.Drawing.Size(200, 24);
             this.urgencyCombo.TabIndex = 24;
@@ -310,7 +296,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(6, 225);
+            this.label10.Location = new System.Drawing.Point(4, 201);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(144, 15);
             this.label10.TabIndex = 23;
@@ -321,7 +307,7 @@
             this.animalCategoryCombo.FormattingEnabled = true;
             this.animalCategoryCombo.Items.AddRange(new object[] {
             "anc_id"});
-            this.animalCategoryCombo.Location = new System.Drawing.Point(182, 192);
+            this.animalCategoryCombo.Location = new System.Drawing.Point(182, 168);
             this.animalCategoryCombo.Name = "animalCategoryCombo";
             this.animalCategoryCombo.Size = new System.Drawing.Size(200, 24);
             this.animalCategoryCombo.TabIndex = 22;
@@ -330,21 +316,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(6, 195);
+            this.label9.Location = new System.Drawing.Point(5, 171);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(138, 15);
             this.label9.TabIndex = 21;
             this.label9.Text = "Категория животного:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(6, 167);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(173, 15);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Место обитания животного:";
             // 
             // label7
             // 
@@ -605,7 +581,6 @@
             this.groupBox3.Controls.Add(this.dateTimePicker1);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.comboBox2);
-            this.groupBox3.Controls.Add(this.comboBox3);
             this.groupBox3.Controls.Add(this.comboBox4);
             this.groupBox3.Controls.Add(this.comboBox5);
             this.groupBox3.Controls.Add(this.button1);
@@ -617,7 +592,6 @@
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.comboBox8);
             this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.comboBox9);
             this.groupBox3.Controls.Add(this.label22);
@@ -654,20 +628,10 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "or_id"});
-            this.comboBox2.Location = new System.Drawing.Point(182, 252);
+            this.comboBox2.Location = new System.Drawing.Point(182, 231);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(200, 24);
             this.comboBox2.TabIndex = 32;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "rc_animal_habitat"});
-            this.comboBox3.Location = new System.Drawing.Point(182, 162);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(200, 24);
-            this.comboBox3.TabIndex = 31;
             // 
             // comboBox4
             // 
@@ -713,7 +677,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(6, 283);
+            this.label16.Location = new System.Drawing.Point(5, 264);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(142, 15);
             this.label16.TabIndex = 28;
@@ -723,7 +687,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(6, 255);
+            this.label17.Location = new System.Drawing.Point(6, 234);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(146, 15);
             this.label17.TabIndex = 27;
@@ -734,7 +698,7 @@
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Items.AddRange(new object[] {
             "as_id"});
-            this.comboBox6.Location = new System.Drawing.Point(182, 280);
+            this.comboBox6.Location = new System.Drawing.Point(182, 261);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(200, 24);
             this.comboBox6.TabIndex = 26;
@@ -744,7 +708,7 @@
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Items.AddRange(new object[] {
             "ut_id"});
-            this.comboBox7.Location = new System.Drawing.Point(182, 222);
+            this.comboBox7.Location = new System.Drawing.Point(182, 201);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(200, 24);
             this.comboBox7.TabIndex = 24;
@@ -753,7 +717,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(6, 225);
+            this.label18.Location = new System.Drawing.Point(4, 204);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(144, 15);
             this.label18.TabIndex = 23;
@@ -764,7 +728,7 @@
             this.comboBox8.FormattingEnabled = true;
             this.comboBox8.Items.AddRange(new object[] {
             "anc_id"});
-            this.comboBox8.Location = new System.Drawing.Point(182, 192);
+            this.comboBox8.Location = new System.Drawing.Point(182, 168);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(200, 24);
             this.comboBox8.TabIndex = 22;
@@ -773,21 +737,11 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label19.Location = new System.Drawing.Point(6, 195);
+            this.label19.Location = new System.Drawing.Point(5, 171);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(138, 15);
             this.label19.TabIndex = 21;
             this.label19.Text = "Категория животного:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.Location = new System.Drawing.Point(6, 167);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(173, 15);
-            this.label20.TabIndex = 19;
-            this.label20.Text = "Место обитания животного:";
             // 
             // label21
             // 
@@ -897,7 +851,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox animalCategoryCombo;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox aplCategoryCombo;
         private System.Windows.Forms.Label label6;
@@ -916,7 +869,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ComboBox orgCombo;
-        private System.Windows.Forms.ComboBox locationCombo;
         private System.Windows.Forms.ComboBox distrCombo;
         private System.Windows.Forms.ComboBox reg_cardCombo;
         private System.Windows.Forms.DateTimePicker dtPickerEnd;
@@ -933,7 +885,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Button button1;
@@ -945,7 +896,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox comboBox8;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox comboBox9;
         private System.Windows.Forms.Label label22;

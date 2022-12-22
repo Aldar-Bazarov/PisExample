@@ -2,10 +2,12 @@
 using PisFirst.Controllers.Records;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using PisFirst.Controllers.ExportToolsController;
 using PisFirst.Controllers.DataController;
 using PisFirst.Models;
+using PisFirst.Utils;
 
 namespace PisFirst.Views
 {
@@ -14,31 +16,23 @@ namespace PisFirst.Views
     /// </summary>
     public partial class MainForm : Form
     {
-
+        private Filter _filter;
         /// <summary>
         /// Конструктор формы
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
-            FillComboBox(reg_cardCombo);
-            FillComboBox(aplCategoryCombo);
-            FillComboBox(distrCombo);
-            FillComboBox(locationCombo);
-            FillComboBox(animalCategoryCombo);
-            FillComboBox(urgencyCombo);
-            FillComboBox(orgCombo);
-            FillComboBox(statusCombo);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.WindowState = FormWindowState.Maximized;
         }
 
         
-        private void FillComboBox(ComboBox comboBox)
+        private void FillComboBox()
         {
-            var dataController = new DataController();
-            string columnName = comboBox.Items[0].ToString();
-            // comboBox = dataController.getComboBoxSourceFromDb(comboBox);
+            ComboBox[] comboFilters = {reg_cardCombo,aplCategoryCombo,
+                                        distrCombo,animalCategoryCombo,
+                                        urgencyCombo,orgCombo,statusCombo };
+            RecordsController.GetFilterComboBoxes(comboFilters);
+
             // comboBox.Items.Clear();
         }
 
@@ -71,7 +65,10 @@ namespace PisFirst.Views
         private void MainForm_Load(object sender, EventArgs e)
         {
             CreateColumns();
-            FillRows(registrationCard_dataGridView);
+            FillRows();
+            FillComboBox();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         /// <summary>
@@ -79,33 +76,36 @@ namespace PisFirst.Views
         /// </summary>
         private void CreateColumns()
         {
-            registrationCard_dataGridView.Columns.Add("rc_id", "ID");
-            registrationCard_dataGridView.Columns.Add("rc_application_date", "Дата заявки");
-            registrationCard_dataGridView.Columns.Add("rc_animal_habitat", "Место обитания животного");
-            registrationCard_dataGridView.Columns.Add("rc_capture_reason", "Причина отлова");
-            registrationCard_dataGridView.Columns.Add("rc_signing_date", "Дата подписания");
-            registrationCard_dataGridView.Columns.Add("rc_signature", "Подпись");
-            registrationCard_dataGridView.Columns.Add("u_id", "Заявку принял");
-            registrationCard_dataGridView.Columns.Add("om_id", "Организация");
-            registrationCard_dataGridView.Columns.Add("or_id", "ОМСУ");
-            registrationCard_dataGridView.Columns.Add("ut_id", "Срочность");
-            registrationCard_dataGridView.Columns.Add("anc_id", "Категория животного");
+            registrationCard_dataGridView.Columns.Add("rc_application_date", "Дата подачи заявления");
+            registrationCard_dataGridView.Columns.Add("rc_id", "Номер заявки");
             registrationCard_dataGridView.Columns.Add("apc_id", "Категория заявителя");
-            registrationCard_dataGridView.Columns.Add("as_id", "Статус заявки");
+            registrationCard_dataGridView.Columns.Add("md_id", "Населенный пункт, на территории которого " +
+                                                                                    "следует отловить животное");
+            registrationCard_dataGridView.Columns.Add("rc_animal_habitat", "Место обитания животного");
+            registrationCard_dataGridView.Columns.Add("anc_id", "Категория животного");
+            registrationCard_dataGridView.Columns.Add("ut_id", "Срочность исполнения");
+            registrationCard_dataGridView.Columns.Add("or_id", "Организация по отлову");
+            registrationCard_dataGridView.Columns.Add("as_id", "Текущий статус заявки");
+            registrationCard_dataGridView.Columns.Add("as_changedate", "Дата установки статуса");
 
-            registrationCard_dataGridView.Columns[0].Width = 25;
-            registrationCard_dataGridView.Columns[1].Width = 75;
-            registrationCard_dataGridView.Columns[2].Width = 100;
-            registrationCard_dataGridView.Columns[3].Width = 100;
-            registrationCard_dataGridView.Columns[4].Width = 75;
-            registrationCard_dataGridView.Columns[5].Width = 75;
-            registrationCard_dataGridView.Columns[6].Width = 100;
+            // registrationCard_dataGridView.Columns.Add("rc_capture_reason", "Причина отлова");
+            // registrationCard_dataGridView.Columns.Add("rc_signing_date", "Дата подписания");
+            // registrationCard_dataGridView.Columns.Add("rc_signature", "Подпись");
+            // registrationCard_dataGridView.Columns.Add("u_id", "Заявку принял");
+
+            registrationCard_dataGridView.Columns[0].Width = 120;
+            registrationCard_dataGridView.Columns[1].Width = 55;
+            registrationCard_dataGridView.Columns[2].Width = 120;
+            registrationCard_dataGridView.Columns[3].Width = 120;
+            registrationCard_dataGridView.Columns[4].Width = 120;
+            registrationCard_dataGridView.Columns[5].Width = 120;
+            registrationCard_dataGridView.Columns[6].Width = 50;
             registrationCard_dataGridView.Columns[7].Width = 100;
-            registrationCard_dataGridView.Columns[8].Width = 100;
-            registrationCard_dataGridView.Columns[9].Width = 100;
-            registrationCard_dataGridView.Columns[10].Width = 100;
-            registrationCard_dataGridView.Columns[11].Width = 100;
-            registrationCard_dataGridView.Columns[12].Width = 100;
+            registrationCard_dataGridView.Columns[8].Width = 120;
+            registrationCard_dataGridView.Columns[9].Width = 120;
+            // registrationCard_dataGridView.Columns[10].Width = 100;
+            // registrationCard_dataGridView.Columns[11].Width = 100;
+            // registrationCard_dataGridView.Columns[12].Width = 100;
 
             registrationCard_dataGridView.RowHeadersVisible = false;
         }
@@ -113,19 +113,20 @@ namespace PisFirst.Views
         /// <summary>
         /// Заполнение строк в dataGridView
         /// </summary>
-        /// <param name="dgv">dataGridView, которую нужно заполнить</param>
-        private void FillRows(DataGridView dgv)
+        private void FillRows(Filter filter=null)
         {
-            dgv.Rows.Clear();
-
-            List<string[]> records = RecordsController.ReadRecords();
-
+            
+            var context = new TestDbModel();
+            List<RegistrationCard> records = RecordsController.GetPermittedRecords(_filter);
             foreach (var record in records)
             {
-                dgv.Rows.Add(record[0], record[1], record[2], record[3], record[4],
-                             record[5], record[6], record[7], record[8], record[9],
-                             record[10], record[11], record[12]);
+                registrationCard_dataGridView.Rows.Add(record.rc_application_date, record.rc_id, record.ApplicantCategory.apc_name, 
+                            record.Omsu.MunicipalDistrict.md_name, record.rc_animal_habitat,
+                             record.AnimalCategory.anc_name, record.UrgencyType.ut_name, 
+                            record.Organization?.or_name ?? " ", record.ApplicationStatus.as_name, record.as_changedate);
             }
+
+          
         }
 
         /// <summary>
@@ -173,6 +174,18 @@ namespace PisFirst.Views
             throw new NotImplementedException();
         }
 
-     
+        private void btnApplyFilters_Click(object sender, EventArgs e)
+        {
+            _filter = Filter.CreateInstance();
+            _filter.RegCardID = (int)reg_cardCombo.SelectedValue;
+            _filter.MaxRecordDate = dtPickerEnd.Value;
+            _filter.MinRecordDate = dtPickerStart.Value;
+            FillRows(_filter);
+        }
+
+        private void btnClearFilters_Click(object sender, EventArgs e)
+        {
+            FillRows();
+        }
     }
 }

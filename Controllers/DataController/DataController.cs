@@ -7,25 +7,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using PisFirst.Models;
+using PisFirst.Utils;
 
 namespace PisFirst.Controllers.DataController
 {
-    public class DataController
+    public static class DataController
     {
-        private TestDbModel db = new TestDbModel();
 
-        public void FilterRecords(string[] filters, string[] sorts)
+        public static void FilterRecords(string[] filters, string[] sorts)
         {
             throw new NotImplementedException();
         }
 
-        public DbSet<RegistrationCard> GetRegistryData() => db.RegistrationCard;
+        public static DbSet<RegistrationCard> GetFilteredRegistryData(Filter filter)
+        {
+            return null;
+        }
 
-        // public ComboBox getComboBoxSourceFromDb(ComboBox comboBox)
-        // {
-        //     var column = comboBox.Items[0].ToString();
-        //     // if 
-        //     // return 
-        // }
+       
     }
 }

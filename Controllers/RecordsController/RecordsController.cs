@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Windows.Forms;
+using PisFirst.Utils;
 
 namespace PisFirst.Controllers.Records
 {
@@ -112,6 +113,56 @@ namespace PisFirst.Controllers.Records
                 comboBoxes[4].ValueMember = "apc_id";
                 comboBoxes[4].DisplayMember = "apc_name";
                 comboBoxes[4].DataSource = context.ApplicantCategory.ToList();
+            }
+        }
+
+        public static List<RegistrationCard> GetPermittedRecords(Filter filter=null)
+        {
+            List<RegistrationCard> records = new List<RegistrationCard>();
+            using (var context = new TestDbModel())
+            {
+                
+                    records = context.RegistrationCard
+                        .Where(n => n.rc_application_date >= filter.MinRecordDate &&
+                                    n.rc_application_date <= filter.MaxRecordDate)
+                        .ToList();
+
+                if(filter == null)
+                    records = context.RegistrationCard.Local.Select(n => n).ToList();
+            }
+            return records;
+        } 
+        public static void GetFilterComboBoxes(ComboBox[] comboBox)
+        {
+            using (var context = new TestDbModel())
+            {
+                comboBox[0].DataSource = context.RegistrationCard.Select(n => n).ToList();
+                comboBox[0].DisplayMember = "rc_id";
+                comboBox[0].ValueMember = "rc_id";
+
+                comboBox[1].DataSource = context.ApplicantCategory.Select(n => n).ToList();
+                comboBox[1].DisplayMember = "apc_name";
+                comboBox[1].ValueMember = "apc_id";
+
+                comboBox[2].DataSource = context.MunicipalDistrict.Select(n => n).ToList();
+                comboBox[2].DisplayMember = "md_name";
+                comboBox[2].ValueMember = "md_id";
+
+                comboBox[3].DataSource = context.AnimalCategory.Select(n => n).ToList();
+                comboBox[3].DisplayMember = "anc_name";
+                comboBox[3].ValueMember = "anc_id";
+
+                comboBox[4].DataSource = context.UrgencyType.Select(n => n).ToList();
+                comboBox[4].DisplayMember = "ut_name";
+                comboBox[4].ValueMember = "ut_id";
+
+                comboBox[5].DataSource = context.Organization.Select(n => n).ToList();
+                comboBox[5].DisplayMember = "or_name";
+                comboBox[5].ValueMember = "or_id";
+
+                comboBox[6].DataSource = context.ApplicationStatus.Select(n => n).ToList();
+                comboBox[6].DisplayMember = "as_name";
+                comboBox[6].ValueMember = "as_id";
             }
         }
     }
