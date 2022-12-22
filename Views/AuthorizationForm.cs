@@ -49,10 +49,10 @@ namespace PisFirst.Views
             if (isExist)
             {
                 MessageBox.Show("Вы успешно вошли!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                var mainForm = new MainForm();
+
                 this.Hide();
-                mainForm.ShowDialog();
-                Show();
+                new MainForm().ShowDialog();
+                this.Close();
             }
             else
             {
