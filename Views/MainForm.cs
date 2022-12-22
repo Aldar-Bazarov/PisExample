@@ -2,6 +2,7 @@
 using PisFirst.Controllers.Records;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PisFirst.Views
@@ -19,6 +20,34 @@ namespace PisFirst.Views
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.WindowState = FormWindowState.Maximized;
+            this.Width = Screen.PrimaryScreen.Bounds.Size.Width;
+            this.Height = Screen.PrimaryScreen.Bounds.Size.Height;
+
+            registrationCard_dataGridView.Location = new Point(0, 0);
+            registrationCard_dataGridView.Size = new Size(this.Width - 500, this.Height - 50);
+
+            exitButton.Location = new Point(this.Width - 100, 10);
+            exitButton.Size = new Size(70, 30);
+
+            userLabel.Location = new Point(this.Width - 485, exitButton.Location.Y + 10);
+
+            filterGroupBox.Location = new Point(this.Width - 485, 50);
+
+            showRegistrationCard.Location = new Point(filterGroupBox.Location.X, filterGroupBox.Location.Y + filterGroupBox.Height + 100);
+            showRegistrationCard.Size = new Size(150, 30);
+
+            addRecordButton.Location = new Point(showRegistrationCard.Location.X, showRegistrationCard.Location.Y + 40);
+            addRecordButton.Size = new Size(150, 30);
+
+            changeRecordButton.Location = new Point(addRecordButton.Location.X, addRecordButton.Location.Y + 40);
+            changeRecordButton.Size = new Size(150, 30);
+
+            journalButton.Location = new Point(changeRecordButton.Location.X, changeRecordButton.Location.Y + 40);
+            journalButton.Size = new Size(150, 30);
+
+            exportLabel.Location = new Point(showRegistrationCard.Location.X + 300, filterGroupBox.Location.Y + filterGroupBox.Height + 100);
+            exportExcelButton.Location = new Point(exportLabel.Location.X + 20, exportLabel.Location.Y + 30);
+
         }
 
         /// <summary>
@@ -94,14 +123,7 @@ namespace PisFirst.Views
         /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
         private void addRecordButton_Click(object sender, EventArgs e)
         {
-            using (var addRecordForm = new RegistrationCardForm(false))
-            {
-                addRecordForm.Show();
-                //if (addRecordForm.ShowDialog() != DialogResult.OK)
-                //{
-                //    throw new Exception("Не удалось открыть окно добавления записи");
-                //}
-            }
+            new RegistrationCardForm(false).Show();
         }
 
         /// <summary>
@@ -112,13 +134,7 @@ namespace PisFirst.Views
         /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
         private void showRegistrationCard_Click(object sender, EventArgs e)
         {
-            using (var addRecordForm = new RegistrationCardForm(true))
-            {
-                if (addRecordForm.ShowDialog() != DialogResult.OK)
-                {
-                    throw new Exception("Не удалось открыть окно добавления записи");
-                }
-            }
+             new RegistrationCardForm(false).ShowDialog();
         }
 
         /// <summary>
