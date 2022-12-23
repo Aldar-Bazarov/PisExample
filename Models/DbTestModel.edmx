@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище TestDbContext" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище TestDbContext" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AnimalCategory">
           <Key>
             <PropertyRef Name="anc_id" />
@@ -73,14 +73,26 @@
           <Property Name="rc_capture_reason" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="rc_signing_date" Type="date" Nullable="false" />
           <Property Name="rc_signature" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="rc_capture_date" Type="date" />
+          <Property Name="rc_find_organizrioin_date" Type="date" />
           <Property Name="u_id" Type="int" />
-          <Property Name="om_id" Type="int" />
+          <Property Name="om_id" Type="int" Nullable="false" />
           <Property Name="or_id" Type="int" />
           <Property Name="ut_id" Type="int" />
           <Property Name="anc_id" Type="int" />
           <Property Name="apc_id" Type="int" />
           <Property Name="as_id" Type="int" />
           <Property Name="as_changedate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusHistory">
+          <Key>
+            <PropertyRef Name="sh_id" />
+          </Key>
+          <Property Name="sh_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rc_id" Type="int" />
+          <Property Name="as_changedate" Type="datetime" Nullable="false" />
+          <Property Name="as_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="or_name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UrgencyType">
           <Key>
@@ -193,7 +205,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Registrat__om_id__3B75D760">
-          <End Role="Omsu" Type="Self.Omsu" Multiplicity="0..1" />
+          <End Role="Omsu" Type="Self.Omsu" Multiplicity="1" />
           <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Omsu">
@@ -240,6 +252,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__StatusHis__rc_id__440B1D61">
+          <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="0..1" />
+          <End Role="StatusHistory" Type="Self.StatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationCard">
+              <PropertyRef Name="rc_id" />
+            </Principal>
+            <Dependent Role="StatusHistory">
+              <PropertyRef Name="rc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище TestDbContextContainer">
           <EntitySet Name="AnimalCategory" EntityType="Self.AnimalCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantCategory" EntityType="Self.ApplicantCategory" Schema="dbo" store:Type="Tables" />
@@ -249,6 +273,7 @@
           <EntitySet Name="Omsu" EntityType="Self.Omsu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegistrationCard" EntityType="Self.RegistrationCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusHistory" EntityType="Self.StatusHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UrgencyType" EntityType="Self.UrgencyType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__AppUser__om_id__2F10007B" Association="Self.FK__AppUser__om_id__2F10007B">
@@ -299,9 +324,12 @@
             <End Role="AppUser" EntitySet="AppUser" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
+          <AssociationSet Name="FK__StatusHis__rc_id__440B1D61" Association="Self.FK__StatusHis__rc_id__440B1D61">
+            <End Role="RegistrationCard" EntitySet="RegistrationCard" />
+            <End Role="StatusHistory" EntitySet="StatusHistory" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TestDbContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -389,7 +417,7 @@
           <Property Name="rc_signing_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="rc_signature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="u_id" Type="Int32" />
-          <Property Name="om_id" Type="Int32" />
+          <Property Name="om_id" Type="Int32" Nullable="false" />
           <Property Name="or_id" Type="Int32" />
           <Property Name="ut_id" Type="Int32" />
           <Property Name="anc_id" Type="Int32" />
@@ -403,6 +431,9 @@
           <NavigationProperty Name="Omsu" Relationship="Self.FK__Registrat__om_id__3B75D760" FromRole="RegistrationCard" ToRole="Omsu" />
           <NavigationProperty Name="Organization" Relationship="Self.FK__Registrat__or_id__3C69FB99" FromRole="RegistrationCard" ToRole="Organization" />
           <NavigationProperty Name="UrgencyType" Relationship="Self.FK__Registrat__ut_id__3D5E1FD2" FromRole="RegistrationCard" ToRole="UrgencyType" />
+          <Property Name="rc_capture_date" Type="DateTime" Precision="0" />
+          <Property Name="rc_find_organizrioin_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="StatusHistory" Relationship="TestDbContext.FK__StatusHis__rc_id__440B1D61" FromRole="RegistrationCard" ToRole="StatusHistory" />
         </EntityType>
         <EntityType Name="UrgencyType">
           <Key>
@@ -529,7 +560,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Registrat__om_id__3B75D760">
-          <End Role="Omsu" Type="Self.Omsu" Multiplicity="0..1" />
+          <End Role="Omsu" Type="Self.Omsu" Multiplicity="1" />
           <End Role="RegistrationCard" Type="Self.RegistrationCard" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Omsu">
@@ -623,7 +654,35 @@
             <End Role="UrgencyType" EntitySet="UrgencyType" />
             <End Role="RegistrationCard" EntitySet="RegistrationCard" />
           </AssociationSet>
+          <EntitySet Name="StatusHistory" EntityType="TestDbContext.StatusHistory" />
+          <AssociationSet Name="FK__StatusHis__rc_id__440B1D61" Association="TestDbContext.FK__StatusHis__rc_id__440B1D61">
+            <End Role="RegistrationCard" EntitySet="RegistrationCard" />
+            <End Role="StatusHistory" EntitySet="StatusHistory" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="StatusHistory">
+          <Key>
+            <PropertyRef Name="sh_id" />
+          </Key>
+          <Property Name="sh_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rc_id" Type="Int32" />
+          <Property Name="as_changedate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="as_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="or_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RegistrationCard" Relationship="TestDbContext.FK__StatusHis__rc_id__440B1D61" FromRole="StatusHistory" ToRole="RegistrationCard" />
+        </EntityType>
+        <Association Name="FK__StatusHis__rc_id__440B1D61">
+          <End Type="TestDbContext.RegistrationCard" Role="RegistrationCard" Multiplicity="0..1" />
+          <End Type="TestDbContext.StatusHistory" Role="StatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationCard">
+              <PropertyRef Name="rc_id" />
+            </Principal>
+            <Dependent Role="StatusHistory">
+              <PropertyRef Name="rc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -698,6 +757,8 @@
           <EntitySetMapping Name="RegistrationCard">
             <EntityTypeMapping TypeName="TestDbContext.RegistrationCard">
               <MappingFragment StoreEntitySet="RegistrationCard">
+                <ScalarProperty Name="rc_find_organizrioin_date" ColumnName="rc_find_organizrioin_date" />
+                <ScalarProperty Name="rc_capture_date" ColumnName="rc_capture_date" />
                 <ScalarProperty Name="rc_id" ColumnName="rc_id" />
                 <ScalarProperty Name="rc_application_date" ColumnName="rc_application_date" />
                 <ScalarProperty Name="rc_animal_habitat" ColumnName="rc_animal_habitat" />
@@ -728,6 +789,17 @@
               <MappingFragment StoreEntitySet="UserRole">
                 <ScalarProperty Name="ur_id" ColumnName="ur_id" />
                 <ScalarProperty Name="ur_name" ColumnName="ur_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusHistory">
+            <EntityTypeMapping TypeName="TestDbContext.StatusHistory">
+              <MappingFragment StoreEntitySet="StatusHistory">
+                <ScalarProperty Name="or_name" ColumnName="or_name" />
+                <ScalarProperty Name="as_name" ColumnName="as_name" />
+                <ScalarProperty Name="as_changedate" ColumnName="as_changedate" />
+                <ScalarProperty Name="rc_id" ColumnName="rc_id" />
+                <ScalarProperty Name="sh_id" ColumnName="sh_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,14 +1,16 @@
 ﻿//using PisFirst.Controllers.CRUD;
-using PisFirst.Controllers.Records;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using PisFirst.Controllers.ExportToolsController;
-using PisFirst.Controllers.DataController;
+using PisFirst.Controllers.RecordsController;
 using PisFirst.Models;
 using PisFirst.Utils;
+using Spire.Pdf.Exporting.XPS.Schema;
+using Path = System.IO.Path;
 
 namespace PisFirst.Views
 {
@@ -53,7 +55,11 @@ namespace PisFirst.Views
 
             exportLabel.Location = new Point(showRegistrationCard.Location.X + 300, filterGroupBox.Location.Y + filterGroupBox.Height + 100);
             exportExcelButton.Location = new Point(exportLabel.Location.X + 20, exportLabel.Location.Y + 30);
-
+            CreateColumns();
+            FillRows();
+            userLabel.Text =
+                $"{Program.AuthSession.AppUser.u_second_name} {Program.AuthSession.AppUser.u_first_name}: " 
+                + $"{Program.AuthSession.AppUser.UserRole.ur_name}";
         }
 
         
@@ -63,7 +69,8 @@ namespace PisFirst.Views
                                         distrCombo,animalCategoryCombo,
                                         urgencyCombo,orgCombo,statusCombo };
             RecordsController.GetFilterComboBoxes(comboFilters);
-
+            dtPickerStart.Value = DateTime.Parse($"01.01.{DateTime.Now.Year}");
+            dtPickerEnd.Value = DateTime.Now;
             // comboBox.Items.Clear();
         }
 
@@ -75,16 +82,20 @@ namespace PisFirst.Views
         /// </summary>
         /// <param name="sender">Инициатор</param>
         /// <param name="e">Аргументы события</param>
-        private void btnExportExcel_Click(object sender, EventArgs e)
+        private void exportExcelButton_Click(object sender, EventArgs e)
         {
+            var sfd = new SaveFileDialog();
+            sfd.Filter = "Книга Excel (*.xlsx)|*.xlsx";
+            sfd.FileName = "ExportedRegistry";
+            var dialogResult =  sfd.ShowDialog();
             
-            // ExportToolsController.ExportExcelRegistryRecords();
-        }
-
-        private void btnViewJournal_Click(object sender, EventArgs e)
-        {
-            JournalForm jf = new JournalForm();
-            jf.Show();
+            if (dialogResult == DialogResult.OK) {
+                var dgvRows = registrationCard_dataGridView.Rows;
+                ExportToolsController.ExportExcelRegistryRecords(dgvRows,Path.GetFullPath(sfd.FileName));
+                MessageBox.Show("Регистр успешно экспортирован!", "Экспорт регистра Excel", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
             
         }
 
@@ -95,9 +106,6 @@ namespace PisFirst.Views
         /// <param name="e">Аргументы события</param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            CreateColumns();
-            FillRows();
-            FillComboBox();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.WindowState = FormWindowState.Maximized;
         }
@@ -146,7 +154,7 @@ namespace PisFirst.Views
         /// </summary>
         private void FillRows(Filter filter=null)
         {
-            
+            this.registrationCard_dataGridView.Rows.Clear();
             var context = new TestDbModel();
             List<RegistrationCard> records = RecordsController.GetPermittedRecords(_filter);
             foreach (var record in records)
@@ -156,8 +164,7 @@ namespace PisFirst.Views
                              record.AnimalCategory.anc_name, record.UrgencyType.ut_name, 
                             record.Organization?.or_name ?? " ", record.ApplicationStatus.as_name, record.as_changedate);
             }
-
-          
+            if (filter == null) FillComboBox();
         }
 
         /// <summary>
@@ -166,10 +173,7 @@ namespace PisFirst.Views
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
         /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-        private void addRecordButton_Click(object sender, EventArgs e)
-        {
-            new RegistrationCardForm(false).Show();
-        }
+
 
         /// <summary>
         /// Просмотр карточки реестра
@@ -177,9 +181,9 @@ namespace PisFirst.Views
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
         /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-        private void btnViewRegCard_Click(object sender, EventArgs e)
+        private void showRegistrationCard_Click(object sender, EventArgs e)
         {
-             new RegistrationCardForm(false).ShowDialog();
+            // new RegistrationCardForm(false).ShowDialog();
         }
 
         /// <summary>
@@ -188,23 +192,52 @@ namespace PisFirst.Views
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
         /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-        private void btnEditRegCard_Click(object sender, EventArgs e)
+        private void changeRecordButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
 
+        }
         private void btnApplyFilters_Click(object sender, EventArgs e)
         {
             _filter = Filter.CreateInstance();
-            _filter.RegCardID = (int)reg_cardCombo.SelectedValue;
             _filter.MaxRecordDate = dtPickerEnd.Value;
             _filter.MinRecordDate = dtPickerStart.Value;
+            _filter.RegCardID = reg_cardCombo.SelectedValue != null ? (int)reg_cardCombo.SelectedValue : 0;
+            _filter.ApplicantCategoryID = aplCategoryCombo.SelectedValue != null ? (int)aplCategoryCombo.SelectedValue:0;
+            _filter.MunDistrID = distrCombo.SelectedValue != null ? (int)distrCombo.SelectedValue:0;
+            _filter.UrgencyTypeID = urgencyCombo.SelectedValue != null ? (int)urgencyCombo.SelectedValue : 0;
+            _filter.OrganizationID = orgCombo.SelectedValue != null ? (int)orgCombo.SelectedValue : 0;
+            _filter.StatusID = statusCombo.SelectedValue != null ? (int)statusCombo.SelectedValue : 0;
             FillRows(_filter);
         }
 
         private void btnClearFilters_Click(object sender, EventArgs e)
         {
+            _filter = null;
             FillRows();
+        }
+
+
+        private void addRecordButton_Click(object sender, EventArgs e)
+        {
+            new RegistrationCardForm(false).Show();
+        }
+
+        private void journalButton_Click(object sender, EventArgs e)
+        {
+            JournalForm jf = new JournalForm();
+            jf.Show();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AuthorizationForm authForm = new AuthorizationForm();
+            authForm.ShowDialog();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

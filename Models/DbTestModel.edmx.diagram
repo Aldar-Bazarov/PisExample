@@ -24,9 +24,20 @@
         <AssociationConnector Association="TestDbContext.FK__Registrati__u_id__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="TestDbContext.FK__Omsu__md_id__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="TestDbContext.FK__Organizat__md_id__29572725" ManuallyRouted="false" />
-        <AssociationConnector Association="TestDbContext.FK__Registrat__om_id__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDbContext.FK__Registrat__om_id__3B75D760" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.5" PointY="4.34375" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="4.3437499999999991" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="4.34375" />
+          <ConnectorPoint PointX="5.49" PointY="4.34375" />
+          <ConnectorPoint PointX="5.49" PointY="4.5624999897554517" />
+          <ConnectorPoint PointX="6.51" PointY="4.5624999897554517" />
+          <ConnectorPoint PointX="6.51" PointY="4.34375" />
+          <ConnectorPoint PointX="7.5" PointY="4.34375" />
+        </AssociationConnector>
         <AssociationConnector Association="TestDbContext.FK__Registrat__or_id__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="TestDbContext.FK__Registrat__ut_id__3D5E1FD2" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TestDbContext.StatusHistory" Width="1.5" PointX="9.75" PointY="5.75" />
+        <AssociationConnector Association="TestDbContext.FK__StatusHis__rc_id__440B1D61" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -35,5 +35,6 @@ namespace PisFirst.Models
         public virtual DbSet<RegistrationCard> RegistrationCard { get; set; }
         public virtual DbSet<UrgencyType> UrgencyType { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
+        public virtual DbSet<StatusHistory> StatusHistory { get; set; }
     }
 }

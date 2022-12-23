@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using PisFirst.Controllers.Authorization;
 using PisFirst.Models;
+using PisFirst.Utils;
 
 namespace PisFirst.Controllers.AuthorizationController
 {
@@ -25,13 +26,15 @@ namespace PisFirst.Controllers.AuthorizationController
             var users = context.AppUser.ToList();
 
             var isExist = false;
-
+            
             foreach (var user in users)
             {
                 isExist = user.u_login == login && user.u_password == hashPassword;
+                if (!isExist) continue;
+                Program.AuthSession = new AuthSession();
+                Program.AuthSession.AppUser = user;
+                break;
             }
-
-            // MessageBox.Show($"{context.AnimalCategory.Select(n => n).FirstOrDefault().anc_name}");
             return isExist;
         }
     }

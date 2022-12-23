@@ -80,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\RecordsController\RecordsController.cs" />
-    <Compile Include="Controllers\DataController\DataController.cs" />
     <Compile Include="Controllers\ExportToolsController\ExportToolsController.cs" />
     <Compile Include="Controllers\UserController\UserController.cs" />
     <Compile Include="Models\AnimalCategory.cs">
@@ -120,6 +119,9 @@
       <DependentUpon>DbTestModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RegistrationCard.cs">
+      <DependentUpon>DbTestModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusHistory.cs">
       <DependentUpon>DbTestModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UrgencyType.cs">

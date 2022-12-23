@@ -31,10 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.registrationCard_dataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.userLabel = new System.Windows.Forms.Label();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.filterGroupBox = new System.Windows.Forms.GroupBox();
             this.dtPickerEnd = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
             this.orgCombo = new System.Windows.Forms.ComboBox();
@@ -67,40 +66,16 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnViewJournal = new System.Windows.Forms.Button();
-            this.btnViewRegCard = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btnExportExcel = new System.Windows.Forms.Button();
-            this.btnEditRegCard = new System.Windows.Forms.Button();
-            this.btnAddRegCard = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label24 = new System.Windows.Forms.Label();
+            this.journalButton = new System.Windows.Forms.Button();
+            this.showRegistrationCard = new System.Windows.Forms.Button();
+            this.exportLabel = new System.Windows.Forms.Label();
+            this.exportExcelButton = new System.Windows.Forms.Button();
+            this.changeRecordButton = new System.Windows.Forms.Button();
+            this.addRecordButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.registrationCard_dataGridView)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.filterGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // registrationCard_dataGridView
@@ -118,70 +93,59 @@
             this.registrationCard_dataGridView.Size = new System.Drawing.Size(1053, 567);
             this.registrationCard_dataGridView.TabIndex = 0;
             // 
-            // label1
+            // userLabel
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(1147, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Василий Петров:";
+            this.userLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.userLabel.AutoSize = true;
+            this.userLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userLabel.Location = new System.Drawing.Point(1260, 14);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(0, 16);
+            this.userLabel.TabIndex = 2;
             // 
-            // label2
+            // exitButton
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(1260, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "оператор ОМСУ";
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exitButton.Location = new System.Drawing.Point(1378, 9);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 27);
+            this.exitButton.TabIndex = 3;
+            this.exitButton.Text = "Выйти";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // btnExit
+            // filterGroupBox
             // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnExit.Location = new System.Drawing.Point(1378, 9);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 27);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.Text = "Выйти";
-            this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.dtPickerEnd);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.orgCombo);
-            this.groupBox1.Controls.Add(this.distrCombo);
-            this.groupBox1.Controls.Add(this.reg_cardCombo);
-            this.groupBox1.Controls.Add(this.btnApplyFilters);
-            this.groupBox1.Controls.Add(this.btnClearFilters);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.statusCombo);
-            this.groupBox1.Controls.Add(this.urgencyCombo);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.animalCategoryCombo);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.aplCategoryCombo);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.dtPickerStart);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(1054, 37);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(399, 358);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Фильтрация";
+            this.filterGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.filterGroupBox.AutoSize = true;
+            this.filterGroupBox.Controls.Add(this.dtPickerEnd);
+            this.filterGroupBox.Controls.Add(this.label14);
+            this.filterGroupBox.Controls.Add(this.orgCombo);
+            this.filterGroupBox.Controls.Add(this.distrCombo);
+            this.filterGroupBox.Controls.Add(this.reg_cardCombo);
+            this.filterGroupBox.Controls.Add(this.btnApplyFilters);
+            this.filterGroupBox.Controls.Add(this.btnClearFilters);
+            this.filterGroupBox.Controls.Add(this.label12);
+            this.filterGroupBox.Controls.Add(this.label11);
+            this.filterGroupBox.Controls.Add(this.statusCombo);
+            this.filterGroupBox.Controls.Add(this.urgencyCombo);
+            this.filterGroupBox.Controls.Add(this.label10);
+            this.filterGroupBox.Controls.Add(this.animalCategoryCombo);
+            this.filterGroupBox.Controls.Add(this.label9);
+            this.filterGroupBox.Controls.Add(this.label7);
+            this.filterGroupBox.Controls.Add(this.aplCategoryCombo);
+            this.filterGroupBox.Controls.Add(this.label6);
+            this.filterGroupBox.Controls.Add(this.label5);
+            this.filterGroupBox.Controls.Add(this.dtPickerStart);
+            this.filterGroupBox.Controls.Add(this.label4);
+            this.filterGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.filterGroupBox.Location = new System.Drawing.Point(1054, 37);
+            this.filterGroupBox.Name = "filterGroupBox";
+            this.filterGroupBox.Size = new System.Drawing.Size(399, 358);
+            this.filterGroupBox.TabIndex = 6;
+            this.filterGroupBox.TabStop = false;
+            this.filterGroupBox.Text = "Фильтрация";
             // 
             // dtPickerEnd
             // 
@@ -492,313 +456,71 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // groupBox2
+            // journalButton
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnViewJournal);
-            this.groupBox2.Controls.Add(this.btnViewRegCard);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.btnExportExcel);
-            this.groupBox2.Controls.Add(this.btnEditRegCard);
-            this.groupBox2.Controls.Add(this.btnAddRegCard);
-            this.groupBox2.Location = new System.Drawing.Point(1086, 395);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(802, 162);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Инструменты";
+            this.journalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.journalButton.Location = new System.Drawing.Point(1206, 413);
+            this.journalButton.Name = "journalButton";
+            this.journalButton.Size = new System.Drawing.Size(270, 59);
+            this.journalButton.TabIndex = 18;
+            this.journalButton.Text = "Форма журнала";
+            this.journalButton.UseVisualStyleBackColor = true;
+            this.journalButton.Click += new System.EventHandler(this.journalButton_Click);
             // 
-            // btnViewJournal
+            // showRegistrationCard
             // 
-            this.btnViewJournal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnViewJournal.Location = new System.Drawing.Point(278, 85);
-            this.btnViewJournal.Name = "btnViewJournal";
-            this.btnViewJournal.Size = new System.Drawing.Size(270, 59);
-            this.btnViewJournal.TabIndex = 18;
-            this.btnViewJournal.Text = "Форма журнала";
-            this.btnViewJournal.UseVisualStyleBackColor = true;
-            this.btnViewJournal.Click += new System.EventHandler(this.btnViewJournal_Click);
+            this.showRegistrationCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.showRegistrationCard.Location = new System.Drawing.Point(1076, 494);
+            this.showRegistrationCard.Name = "showRegistrationCard";
+            this.showRegistrationCard.Size = new System.Drawing.Size(270, 59);
+            this.showRegistrationCard.TabIndex = 17;
+            this.showRegistrationCard.Text = "Учётная карточка";
+            this.showRegistrationCard.UseVisualStyleBackColor = true;
+            this.showRegistrationCard.Click += new System.EventHandler(this.showRegistrationCard_Click);
             // 
-            // btnViewRegCard
+            // exportLabel
             // 
-            this.btnViewRegCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnViewRegCard.Location = new System.Drawing.Point(9, 85);
-            this.btnViewRegCard.Name = "btnViewRegCard";
-            this.btnViewRegCard.Size = new System.Drawing.Size(270, 59);
-            this.btnViewRegCard.TabIndex = 17;
-            this.btnViewRegCard.Text = "Учётная карточка";
-            this.btnViewRegCard.UseVisualStyleBackColor = true;
-            this.btnViewRegCard.Click += new System.EventHandler(this.btnViewRegCard_Click);
+            this.exportLabel.AutoSize = true;
+            this.exportLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exportLabel.Location = new System.Drawing.Point(1132, 485);
+            this.exportLabel.Name = "exportLabel";
+            this.exportLabel.Size = new System.Drawing.Size(112, 16);
+            this.exportLabel.TabIndex = 16;
+            this.exportLabel.Text = "Экспорт в Excel:";
             // 
-            // label13
+            // exportExcelButton
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(652, 52);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(112, 16);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "Экспорт в Excel:";
+            this.exportExcelButton.BackgroundImage = global::PisFirst.Properties.Resources.excel;
+            this.exportExcelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exportExcelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exportExcelButton.Location = new System.Drawing.Point(1272, 433);
+            this.exportExcelButton.Name = "exportExcelButton";
+            this.exportExcelButton.Size = new System.Drawing.Size(61, 55);
+            this.exportExcelButton.TabIndex = 15;
+            this.exportExcelButton.UseVisualStyleBackColor = true;
+            this.exportExcelButton.Click += new System.EventHandler(this.exportExcelButton_Click);
             // 
-            // btnExportExcel
+            // changeRecordButton
             // 
-            this.btnExportExcel.BackgroundImage = global::PisFirst.Properties.Resources.excel;
-            this.btnExportExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnExportExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnExportExcel.Location = new System.Drawing.Point(678, 87);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(61, 55);
-            this.btnExportExcel.TabIndex = 15;
-            this.btnExportExcel.UseVisualStyleBackColor = true;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            this.changeRecordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changeRecordButton.Location = new System.Drawing.Point(1061, 347);
+            this.changeRecordButton.Name = "changeRecordButton";
+            this.changeRecordButton.Size = new System.Drawing.Size(270, 59);
+            this.changeRecordButton.TabIndex = 14;
+            this.changeRecordButton.Text = "Изменить заявку";
+            this.changeRecordButton.UseVisualStyleBackColor = true;
+            this.changeRecordButton.Click += new System.EventHandler(this.changeRecordButton_Click);
             // 
-            // btnEditRegCard
+            // addRecordButton
             // 
-            this.btnEditRegCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnEditRegCard.Location = new System.Drawing.Point(278, 31);
-            this.btnEditRegCard.Name = "btnEditRegCard";
-            this.btnEditRegCard.Size = new System.Drawing.Size(270, 59);
-            this.btnEditRegCard.TabIndex = 14;
-            this.btnEditRegCard.Text = "Изменить заявку";
-            this.btnEditRegCard.UseVisualStyleBackColor = true;
-            this.btnEditRegCard.Click += new System.EventHandler(this.btnEditRegCard_Click);
-            // 
-            // btnAddRegCard
-            // 
-            this.btnAddRegCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddRegCard.Location = new System.Drawing.Point(9, 31);
-            this.btnAddRegCard.Name = "btnAddRegCard";
-            this.btnAddRegCard.Size = new System.Drawing.Size(270, 59);
-            this.btnAddRegCard.TabIndex = 13;
-            this.btnAddRegCard.Text = "Добавить заявку";
-            this.btnAddRegCard.UseVisualStyleBackColor = true;
-            this.btnAddRegCard.Click += new System.EventHandler(this.btnAddRegCard_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.AutoSize = true;
-            this.groupBox3.Controls.Add(this.dateTimePicker1);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.comboBox2);
-            this.groupBox3.Controls.Add(this.comboBox4);
-            this.groupBox3.Controls.Add(this.comboBox5);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.comboBox6);
-            this.groupBox3.Controls.Add(this.comboBox7);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.comboBox8);
-            this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Controls.Add(this.comboBox9);
-            this.groupBox3.Controls.Add(this.label22);
-            this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.dateTimePicker2);
-            this.groupBox3.Controls.Add(this.label24);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox3.Location = new System.Drawing.Point(1459, 37);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(399, 358);
-            this.groupBox3.TabIndex = 15;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Сортировка";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(182, 50);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 34;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(6, 55);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(166, 15);
-            this.label15.TabIndex = 33;
-            this.label15.Text = "Дата подачи заявления до:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "or_id"});
-            this.comboBox2.Location = new System.Drawing.Point(182, 231);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 24);
-            this.comboBox2.TabIndex = 32;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "md_id"});
-            this.comboBox4.Location = new System.Drawing.Point(182, 134);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(200, 24);
-            this.comboBox4.TabIndex = 30;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "rc_id"});
-            this.comboBox5.Location = new System.Drawing.Point(182, 78);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(200, 24);
-            this.comboBox5.TabIndex = 29;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(182, 310);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 27);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Применить";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(285, 310);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 27);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Очистить";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(5, 264);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(142, 15);
-            this.label16.TabIndex = 28;
-            this.label16.Text = "Текущий статус заявки:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(6, 234);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(146, 15);
-            this.label17.TabIndex = 27;
-            this.label17.Text = "Организация по отлову:";
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
-            "as_id"});
-            this.comboBox6.Location = new System.Drawing.Point(182, 261);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(200, 24);
-            this.comboBox6.TabIndex = 26;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Items.AddRange(new object[] {
-            "ut_id"});
-            this.comboBox7.Location = new System.Drawing.Point(182, 201);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(200, 24);
-            this.comboBox7.TabIndex = 24;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(4, 204);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(144, 15);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Срочность исполнения:";
-            // 
-            // comboBox8
-            // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Items.AddRange(new object[] {
-            "anc_id"});
-            this.comboBox8.Location = new System.Drawing.Point(182, 168);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(200, 24);
-            this.comboBox8.TabIndex = 22;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label19.Location = new System.Drawing.Point(5, 171);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(138, 15);
-            this.label19.TabIndex = 21;
-            this.label19.Text = "Категория животного:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.Location = new System.Drawing.Point(6, 139);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(118, 15);
-            this.label21.TabIndex = 17;
-            this.label21.Text = "Населенный пункт:";
-            // 
-            // comboBox9
-            // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Items.AddRange(new object[] {
-            "apc_id"});
-            this.comboBox9.Location = new System.Drawing.Point(182, 106);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(200, 24);
-            this.comboBox9.TabIndex = 16;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label22.Location = new System.Drawing.Point(6, 109);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(137, 15);
-            this.label22.TabIndex = 15;
-            this.label22.Text = "Категория заявителя:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(6, 81);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(92, 15);
-            this.label23.TabIndex = 13;
-            this.label23.Text = "Номер заявки:";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(182, 22);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker2.TabIndex = 12;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(6, 27);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(166, 15);
-            this.label24.TabIndex = 11;
-            this.label24.Text = "Дата подачи заявления от:";
+            this.addRecordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addRecordButton.Location = new System.Drawing.Point(1118, 390);
+            this.addRecordButton.Name = "addRecordButton";
+            this.addRecordButton.Size = new System.Drawing.Size(270, 59);
+            this.addRecordButton.TabIndex = 13;
+            this.addRecordButton.Text = "Добавить заявку";
+            this.addRecordButton.UseVisualStyleBackColor = true;
+            this.addRecordButton.Click += new System.EventHandler(this.addRecordButton_Click);
             // 
             // MainForm
             // 
@@ -807,40 +529,39 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1900, 567);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.addRecordButton);
+            this.Controls.Add(this.showRegistrationCard);
+            this.Controls.Add(this.journalButton);
+            this.Controls.Add(this.changeRecordButton);
             this.Controls.Add(this.registrationCard_dataGridView);
+            this.Controls.Add(this.exportLabel);
             this.Controls.Add(this.bindingNavigator1);
+            this.Controls.Add(this.exportExcelButton);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.filterGroupBox);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.userLabel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Регистр по отлову животных без владельцев";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.registrationCard_dataGridView)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.filterGroupBox.ResumeLayout(false);
+            this.filterGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label userLabel;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.GroupBox filterGroupBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnClearFilters;
@@ -874,33 +595,11 @@
         private System.Windows.Forms.DateTimePicker dtPickerEnd;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView registrationCard_dataGridView;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnViewJournal;
-        private System.Windows.Forms.Button btnViewRegCard;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btnExportExcel;
-        private System.Windows.Forms.Button btnEditRegCard;
-        private System.Windows.Forms.Button btnAddRegCard;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.ComboBox comboBox9;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button journalButton;
+        private System.Windows.Forms.Button showRegistrationCard;
+        private System.Windows.Forms.Label exportLabel;
+        private System.Windows.Forms.Button exportExcelButton;
+        private System.Windows.Forms.Button changeRecordButton;
+        private System.Windows.Forms.Button addRecordButton;
     }
 }

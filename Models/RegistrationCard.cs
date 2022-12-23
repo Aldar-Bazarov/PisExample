@@ -14,6 +14,12 @@ namespace PisFirst.Models
     
     public partial class RegistrationCard
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RegistrationCard()
+        {
+            this.StatusHistory = new HashSet<StatusHistory>();
+        }
+    
         public int rc_id { get; set; }
         public System.DateTime rc_application_date { get; set; }
         public string rc_animal_habitat { get; set; }
@@ -21,13 +27,15 @@ namespace PisFirst.Models
         public System.DateTime rc_signing_date { get; set; }
         public string rc_signature { get; set; }
         public Nullable<int> u_id { get; set; }
-        public Nullable<int> om_id { get; set; }
+        public int om_id { get; set; }
         public Nullable<int> or_id { get; set; }
         public Nullable<int> ut_id { get; set; }
         public Nullable<int> anc_id { get; set; }
         public Nullable<int> apc_id { get; set; }
         public Nullable<int> as_id { get; set; }
         public System.DateTime as_changedate { get; set; }
+        public Nullable<System.DateTime> rc_capture_date { get; set; }
+        public Nullable<System.DateTime> rc_find_organizrioin_date { get; set; }
     
         public virtual AnimalCategory AnimalCategory { get; set; }
         public virtual ApplicantCategory ApplicantCategory { get; set; }
@@ -36,5 +44,7 @@ namespace PisFirst.Models
         public virtual Omsu Omsu { get; set; }
         public virtual Organization Organization { get; set; }
         public virtual UrgencyType UrgencyType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StatusHistory> StatusHistory { get; set; }
     }
 }
