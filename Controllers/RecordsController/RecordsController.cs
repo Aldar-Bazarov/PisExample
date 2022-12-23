@@ -7,8 +7,16 @@ using PisFirst.Utils;
 
 namespace PisFirst.Controllers.RecordsController
 {
+    /// <summary>
+    /// Контроллер для взаимодействия с записями реестра
+    /// </summary>
     internal static class RecordsController
     {
+        /// <summary>
+        /// Получить одну запись
+        /// </summary>
+        /// <param name="id"> id записи </param>
+        /// <returns> Учётную карточку реестра </returns>
         public static RegistrationCard GetOneRecord(int id)
         {
             using (var context = new TestDbModel())
@@ -19,6 +27,10 @@ namespace PisFirst.Controllers.RecordsController
             }
         }
 
+        /// <summary>
+        /// Создать запись в базе данных
+        /// </summary>
+        /// <param name="values"> Значения для заполнения </param>
         public static void CreateRecord(string[] values)
         {
             using (var context = new TestDbModel())
@@ -42,6 +54,13 @@ namespace PisFirst.Controllers.RecordsController
             }
         }
 
+        /// <summary>
+        /// Изменить запись в базе данных
+        /// </summary>
+        /// <param name="recordId"> ID записи </param>
+        /// <param name="organizationId"> ID организации </param>
+        /// <param name="captureDate"> Дата отлова </param>
+        /// <param name="captureDateIsChanged"> Флаг на дату отлова </param>
         public static void UpdateRecord(int recordId, int organizationId, DateTime captureDate, bool captureDateIsChanged)
         {
             using (var context = new TestDbModel())
@@ -61,6 +80,11 @@ namespace PisFirst.Controllers.RecordsController
                 }
             }
         }
+
+        /// <summary>
+        /// Заполнить comboBox'ы формы учётной карточки
+        /// </summary>
+        /// <param name="comboBoxes"> comboBox'ы </param>
         public static void FillRecordComboBoxes(ComboBox[] comboBoxes)
         {
             using (var context = new TestDbModel())
@@ -79,9 +103,12 @@ namespace PisFirst.Controllers.RecordsController
                 comboBoxes[3].DataSource = context.ApplicantCategory.ToList();
             }
         }
-        
-        
 
+        /// <summary>
+        /// Получить разрешённые записи
+        /// </summary>
+        /// <param name="filter"> Фильтры </param>
+        /// <returns></returns>
         public static List<RegistrationCard> GetPermittedRecords(Filter filter = null)
         {
             IEnumerable<RegistrationCard> records;
@@ -92,31 +119,32 @@ namespace PisFirst.Controllers.RecordsController
             }
             else
             {
-                // MessageBox.Show(filter.RegCardID.ToString());
                 records = context.RegistrationCard
                     .Where(n => n.rc_application_date >= filter.MinRecordDate &&
                                 n.rc_application_date <= filter.MaxRecordDate);
-
                 if (filter.RegCardID != 0)
                     records = records
                         .Where(n => n.rc_id == filter.RegCardID);
                 if (filter.ApplicantCategoryID != 0)
                     records = records
                         .Where(n => n.ApplicantCategory.apc_id == filter.ApplicantCategoryID);
+                if (filter.MunDistrID != 0) records = records.Where(n => n.Omsu.MunicipalDistrict.md_id == filter.MunDistrID);
 
-                if (filter.MunDistrID != 0) records = records.Where(n => n.om_id == filter.MunDistrID);
-
-                if (filter.UrgencyTypeID != 0) records = records.Where(n => n.u_id == filter.UrgencyTypeID);
+                if (filter.UrgencyTypeID != 0) records = records.Where(n => n.ut_id == filter.UrgencyTypeID);
+                if (filter.AnimalCategoryID != 0) records = records.Where(n => n.AnimalCategory.anc_id == filter.AnimalCategoryID);
 
                 if (filter.OrganizationID != 0) records = records.Where(n => n.or_id == filter.OrganizationID);
 
                 if (filter.StatusID != 0) records = records.Where(n => n.as_id == filter.StatusID);
             }
 
-
             return records.ToList();
         }
 
+        /// <summary>
+        /// Заполнить comboBox'ы контролла с фильтрами
+        /// </summary>
+        /// <param name="comboBox"> comboBox'ы </param>
         public static void GetFilterComboBoxes(ComboBox[] comboBox)
         {
             using (var context = new TestDbModel())
@@ -151,7 +179,6 @@ namespace PisFirst.Controllers.RecordsController
                 comboBox[6].SelectedIndex = -1;
             }
         }
-
         public static List<StatusHistory> GetStatusHistory(int recordID)
         {
             var history = new List<StatusHistory>();
@@ -163,5 +190,10 @@ namespace PisFirst.Controllers.RecordsController
 
             return history;
         }
+
     }
 }
+
+
+
+

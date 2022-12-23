@@ -1,15 +1,11 @@
-﻿//using PisFirst.Controllers.CRUD;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using PisFirst.Controllers.ExportToolsController;
 using PisFirst.Controllers.RecordsController;
 using PisFirst.Models;
 using PisFirst.Utils;
-using Spire.Pdf.Exporting.XPS.Schema;
 using Path = System.IO.Path;
 
 namespace PisFirst.Views
@@ -19,15 +15,20 @@ namespace PisFirst.Views
     /// </summary>
     public partial class MainForm : Form
     {
-        private Filter _filter;
         /// <summary>
-        /// Конструктор формы
+        /// Фильтры
+        /// </summary>
+        private Filter _filter;
+
+        /// <summary>
+        /// Инициализация экземпляра класса
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.WindowState = FormWindowState.Maximized;
+            this.MaximizeBox = false;
             this.Width = Screen.PrimaryScreen.Bounds.Size.Width;
             this.Height = Screen.PrimaryScreen.Bounds.Size.Height;
 
@@ -47,10 +48,7 @@ namespace PisFirst.Views
             addRecordButton.Location = new Point(showRegistrationCard.Location.X, showRegistrationCard.Location.Y + 40);
             addRecordButton.Size = new Size(150, 30);
 
-            changeRecordButton.Location = new Point(addRecordButton.Location.X, addRecordButton.Location.Y + 40);
-            changeRecordButton.Size = new Size(150, 30);
-
-            journalButton.Location = new Point(changeRecordButton.Location.X, changeRecordButton.Location.Y + 40);
+            journalButton.Location = new Point(addRecordButton.Location.X, addRecordButton.Location.Y + 40);
             journalButton.Size = new Size(150, 30);
 
             exportLabel.Location = new Point(showRegistrationCard.Location.X + 300, filterGroupBox.Location.Y + filterGroupBox.Height + 100);
@@ -58,11 +56,20 @@ namespace PisFirst.Views
             CreateColumns();
             FillRows();
             userLabel.Text =
-                $"{Program.AuthSession.AppUser.u_second_name} {Program.AuthSession.AppUser.u_first_name}: " 
+                $"{Program.AuthSession.AppUser.u_second_name} {Program.AuthSession.AppUser.u_first_name}: "
                 + $"{Program.AuthSession.AppUser.UserRole.ur_name}";
+
+            registrationCard_dataGridView.MultiSelect = false;
+
+            if (Program.role != Program.UserRole.OmsuOperator && Program.role != Program.UserRole.TrappingOperator)
+            {
+                addRecordButton.Enabled = false;
+            }
         }
 
-        
+        /// <summary>
+        /// Наполнить comboBox'ы данными
+        /// </summary>
         private void FillComboBox()
         {
             ComboBox[] comboFilters = {reg_cardCombo,aplCategoryCombo,
@@ -71,11 +78,8 @@ namespace PisFirst.Views
             RecordsController.GetFilterComboBoxes(comboFilters);
             dtPickerStart.Value = DateTime.Parse($"01.01.{DateTime.Now.Year}");
             dtPickerEnd.Value = DateTime.Now;
-            // comboBox.Items.Clear();
         }
 
-        
-        
         /// <summary>
         /// Событие срабатывающее при нажатии на кнопку "Экспорт в Excel",
         /// совершает выгрузку файла Excel с данными из БД
@@ -87,27 +91,17 @@ namespace PisFirst.Views
             var sfd = new SaveFileDialog();
             sfd.Filter = "Книга Excel (*.xlsx)|*.xlsx";
             sfd.FileName = "ExportedRegistry";
-            var dialogResult =  sfd.ShowDialog();
-            
-            if (dialogResult == DialogResult.OK) {
+            var dialogResult = sfd.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
                 var dgvRows = registrationCard_dataGridView.Rows;
-                ExportToolsController.ExportExcelRegistryRecords(dgvRows,Path.GetFullPath(sfd.FileName));
-                MessageBox.Show("Регистр успешно экспортирован!", "Экспорт регистра Excel", 
+                ExportToolsController.ExportExcelRegistryRecords(dgvRows, Path.GetFullPath(sfd.FileName));
+                MessageBox.Show("Регистр успешно экспортирован!", "Экспорт регистра Excel",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
-            
-        }
 
-        /// <summary>
-        /// Событие, которое срабавтывает при загрузке формы
-        /// </summary>
-        /// <param name="sender">Источник-инициатор</param>
-        /// <param name="e">Аргументы события</param>
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.WindowState = FormWindowState.Maximized;
+
         }
 
         /// <summary>
@@ -152,75 +146,71 @@ namespace PisFirst.Views
         /// <summary>
         /// Заполнение строк в dataGridView
         /// </summary>
-        private void FillRows(Filter filter=null)
+        /// <param name="filter"> Параметры фильтров </param>
+        private void FillRows(Filter filter = null)
         {
             this.registrationCard_dataGridView.Rows.Clear();
             var context = new TestDbModel();
             List<RegistrationCard> records = RecordsController.GetPermittedRecords(_filter);
             foreach (var record in records)
             {
-                registrationCard_dataGridView.Rows.Add(record.rc_application_date, record.rc_id, record.ApplicantCategory.apc_name, 
+                registrationCard_dataGridView.Rows.Add(record.rc_application_date, record.rc_id, record.ApplicantCategory.apc_name,
                             record.Omsu.MunicipalDistrict.md_name, record.rc_animal_habitat,
-                             record.AnimalCategory.anc_name, record.UrgencyType.ut_name, 
+                             record.AnimalCategory.anc_name, record.UrgencyType.ut_name,
                             record.Organization?.or_name ?? " ", record.ApplicationStatus.as_name, record.as_changedate);
             }
             if (filter == null) FillComboBox();
         }
 
         /// <summary>
-        /// Добавления записи в реестр
+        /// Применить фильтры
         /// </summary>
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
-        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-
-
-        /// <summary>
-        /// Просмотр карточки реестра
-        /// </summary>
-        /// <param name="sender"> Источник-инициатор </param>
-        /// <param name="e"> Аргументы события </param>
-        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-
-        /// <summary>
-        /// Изменение записи в реестре
-        /// </summary>
-        /// <param name="sender"> Источник-инициатор </param>
-        /// <param name="e"> Аргументы события </param>
-        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-        private void changeRecordButton_Click(object sender, EventArgs e)
-        {
-
-        }
         private void btnApplyFilters_Click(object sender, EventArgs e)
         {
             _filter = Filter.CreateInstance();
             _filter.MaxRecordDate = dtPickerEnd.Value;
             _filter.MinRecordDate = dtPickerStart.Value;
             _filter.RegCardID = reg_cardCombo.SelectedValue != null ? (int)reg_cardCombo.SelectedValue : 0;
-            _filter.ApplicantCategoryID = aplCategoryCombo.SelectedValue != null ? (int)aplCategoryCombo.SelectedValue:0;
-            _filter.MunDistrID = distrCombo.SelectedValue != null ? (int)distrCombo.SelectedValue:0;
+            _filter.ApplicantCategoryID = aplCategoryCombo.SelectedValue != null ? (int)aplCategoryCombo.SelectedValue : 0;
+            _filter.AnimalCategoryID = animalCategoryCombo.SelectedValue != null ? (int)animalCategoryCombo.SelectedValue : 0;
+            _filter.MunDistrID = distrCombo.SelectedValue != null ? (int)distrCombo.SelectedValue : 0;
             _filter.UrgencyTypeID = urgencyCombo.SelectedValue != null ? (int)urgencyCombo.SelectedValue : 0;
             _filter.OrganizationID = orgCombo.SelectedValue != null ? (int)orgCombo.SelectedValue : 0;
             _filter.StatusID = statusCombo.SelectedValue != null ? (int)statusCombo.SelectedValue : 0;
             FillRows(_filter);
         }
 
+        /// <summary>
+        /// Обработка события нажатия на кнопку "Сбросить фильтры"
+        /// </summary>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы события </param>
+        /// <remarks> Отображает registrationCard_dataGridView без фильтров </remarks>
         private void btnClearFilters_Click(object sender, EventArgs e)
         {
             _filter = null;
             FillRows();
         }
 
-
-    
-
+        /// <summary>
+        /// Обработка события выхода из MainForm
+        /// Переход на AuthForm
+        /// </summary>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы события </param>
         private void journalButton_Click(object sender, EventArgs e)
         {
             JournalForm jf = new JournalForm();
             jf.Show();
         }
 
+        /// <summary>
+        /// Обработка события выхода из MainForm
+        /// </summary>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы события </param>
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -228,55 +218,26 @@ namespace PisFirst.Views
             authForm.ShowDialog();
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
-
-        // Cards
-
         /// <summary>
-        /// Проверить роль пользователя
-        /// </summary>
-        /// <param name="user"> Пользователь </param>
-        /// <returns> Роль </returns>
-        private Program.UserRole CheckUserRole(AppUser user)
-        {
-            switch (user.UserRole.ur_name)
-            {
-                case "Оператор по отлову":
-                    return Program.UserRole.TrappingOperator;
-                case "Оператор ОМСУ":
-                    return Program.UserRole.TrappingOperator;
-                default:
-                    addRecordButton.Enabled = false;
-                    return Program.UserRole.TrappingOperator;
-            }
-        }
-
-
-        /// <summary>
-        /// Добавления записи в реестр
+        /// Открыть форму добавления учётной карточки реестра
         /// </summary>
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
-        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
         private void addRecordButton_Click(object sender, EventArgs e)
         {
-            new RegistrationCardForm(Program.role).ShowDialog();
+            new RegistrationCardForm().ShowDialog();
             FillRows();
         }
 
         /// <summary>
-        /// Просмотр карточки реестра
+        /// Открыть форму Просмотра учётной карточки реестра
         /// </summary>
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
-        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
         private void showRegistrationCard_Click(object sender, EventArgs e)
         {
             var id = registrationCard_dataGridView.SelectedRows[0].Cells[1].Value.ToString();
-            new RegistrationCardForm(id, Program.role).ShowDialog();
+            new RegistrationCardForm(id).ShowDialog();
             FillRows();
         }
     }

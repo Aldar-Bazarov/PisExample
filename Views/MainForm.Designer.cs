@@ -70,7 +70,6 @@
             this.showRegistrationCard = new System.Windows.Forms.Button();
             this.exportLabel = new System.Windows.Forms.Label();
             this.exportExcelButton = new System.Windows.Forms.Button();
-            this.changeRecordButton = new System.Windows.Forms.Button();
             this.addRecordButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.registrationCard_dataGridView)).BeginInit();
             this.filterGroupBox.SuspendLayout();
@@ -422,7 +421,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -500,17 +498,6 @@
             this.exportExcelButton.UseVisualStyleBackColor = true;
             this.exportExcelButton.Click += new System.EventHandler(this.exportExcelButton_Click);
             // 
-            // changeRecordButton
-            // 
-            this.changeRecordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.changeRecordButton.Location = new System.Drawing.Point(1061, 347);
-            this.changeRecordButton.Name = "changeRecordButton";
-            this.changeRecordButton.Size = new System.Drawing.Size(270, 59);
-            this.changeRecordButton.TabIndex = 14;
-            this.changeRecordButton.Text = "Изменить заявку";
-            this.changeRecordButton.UseVisualStyleBackColor = true;
-            this.changeRecordButton.Click += new System.EventHandler(this.changeRecordButton_Click);
-            // 
             // addRecordButton
             // 
             this.addRecordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -532,7 +519,6 @@
             this.Controls.Add(this.addRecordButton);
             this.Controls.Add(this.showRegistrationCard);
             this.Controls.Add(this.journalButton);
-            this.Controls.Add(this.changeRecordButton);
             this.Controls.Add(this.registrationCard_dataGridView);
             this.Controls.Add(this.exportLabel);
             this.Controls.Add(this.bindingNavigator1);
@@ -545,8 +531,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Регистр по отлову животных без владельцев";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.registrationCard_dataGridView)).EndInit();
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
@@ -599,7 +583,6 @@
         private System.Windows.Forms.Button showRegistrationCard;
         private System.Windows.Forms.Label exportLabel;
         private System.Windows.Forms.Button exportExcelButton;
-        private System.Windows.Forms.Button changeRecordButton;
         private System.Windows.Forms.Button addRecordButton;
     }
 }

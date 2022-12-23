@@ -23,20 +23,17 @@ namespace PisFirst.Views
         /// Инициализация экземпляра
         /// </summary>
         /// <remarks> При добавлении карточки </remarks>
-        public RegistrationCardForm(Program.UserRole role)
+        public RegistrationCardForm()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
 
-            if (role != Program.UserRole.OmsuOperator || role != Program.UserRole.TrappingOperator)
+            if (Program.role != Program.UserRole.OmsuOperator && Program.role != Program.UserRole.TrappingOperator)
             {
                 addCardButton.Enabled = false;
             }
 
-            editCardButton.Enabled = false;
-
-            addCardButton.Enabled = true;
             editCardButton.Enabled = false;
 
             var user = Program.AuthSession.AppUser;
@@ -61,22 +58,24 @@ namespace PisFirst.Views
         }
 
         /// <summary>
-        /// Инициализация экземпляра
+        /// Инициализация экземпляра c параметрами
         /// </summary>
-        /// <param name="recordId">Id выбранной карточки</param>
+        /// <param name="recordId"> Id выбранной карточки </param>
         /// <remarks> При изменении карточки </remarks>
-        public RegistrationCardForm(string recordId, Program.UserRole role)
+        public RegistrationCardForm(string recordId)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
-            addCardButton.Enabled = true;
-            editCardButton.Enabled = false;
 
             this.recordId = Convert.ToInt32(recordId);
 
+            if (Program.role != Program.UserRole.OmsuOperator && Program.role != Program.UserRole.TrappingOperator)
+            {
+                editCardButton.Enabled = false;
+            }
+
             addCardButton.Enabled = false;
-            editCardButton.Enabled = true;
 
             var record = RecordsController.GetOneRecord(this.recordId);
 
@@ -93,12 +92,8 @@ namespace PisFirst.Views
             appUserTextBox.Enabled = false;
             omsuTextBox.Text = user.Omsu.om_name;
             omsuTextBox.Enabled = false;
-            //organizationComboBox.SelectedValue = record.Organization?.or_name ?? String.Empty;
-            //urgencyTypeComboBox.SelectedValue = record.UrgencyType.ut_name;
             urgencyTypeComboBox.Enabled = false;
-            //animalCategoryComboBox.SelectedValue = record.AnimalCategory.anc_name;
             animalCategoryComboBox.Enabled = false;
-            //applicantCategoryComboBox.SelectedValue = record.ApplicantCategory.apc_name;
             applicantCategoryComboBox.Enabled = false;
 
             ComboBox[] comboBoxes = new ComboBox[]
@@ -112,7 +107,11 @@ namespace PisFirst.Views
             RecordsController.FillRecordComboBoxes(comboBoxes);
         }
 
-        // Добавить карточку в реестр
+        /// <summary>
+        /// Добавить карточку в реестр
+        /// </summary>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы </param>
         private void addCardButton_Click(object sender, EventArgs e)
         {
             if (animalHabitatTextBox.Text == "" || captureReasonTextBox.Text == "")
@@ -142,8 +141,8 @@ namespace PisFirst.Views
         /// <summary>
         /// Изменить данные карточки
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы </param>
         private void editCardButton_Click(object sender, EventArgs e)
         {
             RecordsController.UpdateRecord(this.recordId, (int)organizationComboBox.SelectedValue, captureDateTimePicker.Value, captureDateIsChanged);
@@ -153,13 +152,12 @@ namespace PisFirst.Views
         /// <summary>
         /// Отлов изменения captureDateIsChanged
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы </param>
         private void captureDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             captureDateIsChanged = true;
         }
-
         private void statusHistoryBtn_Click(object sender, EventArgs e)
         {
             StatusHistory sh = new StatusHistory(recordId);
@@ -167,3 +165,4 @@ namespace PisFirst.Views
         }
     }
 }
+
