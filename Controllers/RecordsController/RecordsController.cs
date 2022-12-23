@@ -9,25 +9,32 @@ namespace PisFirst.Controllers.RecordsController
 {
     internal static class RecordsController
     {
+        public static RegistrationCard GetOneRecord(int id)
+        {
+            using (var context = new TestDbModel())
+            {
+                var record = context.RegistrationCard.FirstOrDefault(card => card.rc_id == id);
+
+                return record;
+            }
+        }
+
         public static void CreateRecord(string[] values)
         {
             using (var context = new TestDbModel())
             {
-                var newCard = new RegistrationCard()
-                {
-                    rc_application_date = Convert.ToDateTime(values[0]), // доделать
-                    rc_animal_habitat = values[1],
-                    rc_capture_reason = values[2],
-                    rc_signing_date = Convert.ToDateTime(values[3]), // доделать
-                    rc_signature = values[4],
-                    u_id = 1, // доделать
-                    om_id = Convert.ToInt32(values[5]),
-                    or_id = Convert.ToInt32(values[6]),
-                    ut_id = Convert.ToInt32(values[7]),
-                    anc_id = Convert.ToInt32(values[8]),
-                    apc_id = Convert.ToInt32(values[9]),
-                    as_id = 1
-                };
+                var newCard = new RegistrationCard();
+                newCard.rc_application_date = Convert.ToDateTime(values[0]);
+                newCard.rc_animal_habitat = values[1];
+                newCard.rc_capture_reason = values[2];
+                newCard.u_id = Convert.ToInt32(values[3]);
+                newCard.om_id = Convert.ToInt32(values[4]);
+                newCard.ut_id = Convert.ToInt32(values[5]);
+                newCard.anc_id = Convert.ToInt32(values[6]);
+                newCard.apc_id = Convert.ToInt32(values[7]);
+                newCard.as_id = 1;
+                newCard.as_changedate = DateTime.Now;
+                newCard.rc_signature = "";
 
                 context.RegistrationCard.Add(newCard);
 
@@ -35,32 +42,45 @@ namespace PisFirst.Controllers.RecordsController
             }
         }
 
-        public static void UpdateRecord()
-        {
-        }
-
-        public static void FillComboBoxes(ComboBox[] comboBoxes)
+        public static void UpdateRecord(int recordId, int organizationId, DateTime captureDate, bool captureDateIsChanged)
         {
             using (var context = new TestDbModel())
             {
-                comboBoxes[0].ValueMember = "om_id";
-                comboBoxes[0].DisplayMember = "om_name";
-                comboBoxes[0].DataSource = context.Omsu.ToList();
-                comboBoxes[0].SelectedIndex = -1;
-                comboBoxes[1].ValueMember = "or_id";
-                comboBoxes[1].DisplayMember = "or_name";
-                comboBoxes[1].DataSource = context.Organization.ToList();
-                comboBoxes[2].ValueMember = "ut_id";
-                comboBoxes[2].DisplayMember = "ut_name";
-                comboBoxes[2].DataSource = context.UrgencyType.ToList();
-                comboBoxes[3].ValueMember = "anc_id";
-                comboBoxes[3].DisplayMember = "anc_name";
-                comboBoxes[3].DataSource = context.AnimalCategory.ToList();
-                comboBoxes[4].ValueMember = "apc_id";
-                comboBoxes[4].DisplayMember = "apc_name";
-                comboBoxes[4].DataSource = context.ApplicantCategory.ToList();
+                var targetCard = context.RegistrationCard.SingleOrDefault(card => card.rc_id == recordId);
+                if (targetCard != null)
+                {
+                    if (captureDateIsChanged)
+                    {
+                        targetCard.rc_capture_date = captureDate;
+                    }
+                    else if (targetCard.or_id != organizationId)
+                    {
+                        targetCard.or_id = organizationId;
+                    }
+                    context.SaveChanges();
+                }
             }
         }
+        public static void FillRecordComboBoxes(ComboBox[] comboBoxes)
+        {
+            using (var context = new TestDbModel())
+            {
+                comboBoxes[0].ValueMember = "or_id";
+                comboBoxes[0].DisplayMember = "or_name";
+                comboBoxes[0].DataSource = context.Organization.ToList();
+                comboBoxes[1].ValueMember = "ut_id";
+                comboBoxes[1].DisplayMember = "ut_name";
+                comboBoxes[1].DataSource = context.UrgencyType.ToList();
+                comboBoxes[2].ValueMember = "anc_id";
+                comboBoxes[2].DisplayMember = "anc_name";
+                comboBoxes[2].DataSource = context.AnimalCategory.ToList();
+                comboBoxes[3].ValueMember = "apc_id";
+                comboBoxes[3].DisplayMember = "apc_name";
+                comboBoxes[3].DataSource = context.ApplicantCategory.ToList();
+            }
+        }
+        
+        
 
         public static List<RegistrationCard> GetPermittedRecords(Filter filter = null)
         {
@@ -130,6 +150,18 @@ namespace PisFirst.Controllers.RecordsController
                 comboBox[6].ValueMember = "as_id";
                 comboBox[6].SelectedIndex = -1;
             }
+        }
+
+        public static List<StatusHistory> GetStatusHistory(int recordID)
+        {
+            var history = new List<StatusHistory>();
+            using (var context = new TestDbModel())
+            {
+                history = context.StatusHistory.Where(n => n.rc_id == recordID)
+                    .ToList();
+            }
+
+            return history;
         }
     }
 }

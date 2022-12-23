@@ -181,10 +181,6 @@ namespace PisFirst.Views
         /// <param name="sender"> Источник-инициатор </param>
         /// <param name="e"> Аргументы события </param>
         /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
-        private void showRegistrationCard_Click(object sender, EventArgs e)
-        {
-            // new RegistrationCardForm(false).ShowDialog();
-        }
 
         /// <summary>
         /// Изменение записи в реестре
@@ -217,10 +213,7 @@ namespace PisFirst.Views
         }
 
 
-        private void addRecordButton_Click(object sender, EventArgs e)
-        {
-            new RegistrationCardForm(false).Show();
-        }
+    
 
         private void journalButton_Click(object sender, EventArgs e)
         {
@@ -238,6 +231,53 @@ namespace PisFirst.Views
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             
+        }
+
+        // Cards
+
+        /// <summary>
+        /// Проверить роль пользователя
+        /// </summary>
+        /// <param name="user"> Пользователь </param>
+        /// <returns> Роль </returns>
+        private Program.UserRole CheckUserRole(AppUser user)
+        {
+            switch (user.UserRole.ur_name)
+            {
+                case "Оператор по отлову":
+                    return Program.UserRole.TrappingOperator;
+                case "Оператор ОМСУ":
+                    return Program.UserRole.TrappingOperator;
+                default:
+                    addRecordButton.Enabled = false;
+                    return Program.UserRole.TrappingOperator;
+            }
+        }
+
+
+        /// <summary>
+        /// Добавления записи в реестр
+        /// </summary>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы события </param>
+        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
+        private void addRecordButton_Click(object sender, EventArgs e)
+        {
+            new RegistrationCardForm(Program.role).ShowDialog();
+            FillRows();
+        }
+
+        /// <summary>
+        /// Просмотр карточки реестра
+        /// </summary>
+        /// <param name="sender"> Источник-инициатор </param>
+        /// <param name="e"> Аргументы события </param>
+        /// <exception cref="Exception"> Ошибка при открытии диалогового окна </exception>
+        private void showRegistrationCard_Click(object sender, EventArgs e)
+        {
+            var id = registrationCard_dataGridView.SelectedRows[0].Cells[1].Value.ToString();
+            new RegistrationCardForm(id, Program.role).ShowDialog();
+            FillRows();
         }
     }
 }

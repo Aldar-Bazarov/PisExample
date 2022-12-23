@@ -31,15 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JournalForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.dataLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.btnExportToWord = new System.Windows.Forms.Button();
-            this.btnExportExcel = new System.Windows.Forms.Button();
             this.journalGrid = new System.Windows.Forms.DataGridView();
             this.omsuComboBox = new System.Windows.Forms.ComboBox();
+            this.btnExportExcel = new System.Windows.Forms.Button();
+            this.btnExportToWord = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.journalGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,15 +63,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = " учёта заявок на отлов животных без владельцев";
             // 
-            // label3
+            // dataLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(131, 127);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "\"______________\"";
+            this.dataLabel.AutoSize = true;
+            this.dataLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataLabel.Location = new System.Drawing.Point(131, 127);
+            this.dataLabel.Name = "dataLabel";
+            this.dataLabel.Size = new System.Drawing.Size(0, 16);
+            this.dataLabel.TabIndex = 2;
             // 
             // label4
             // 
@@ -113,29 +112,6 @@
             this.label27.TabIndex = 7;
             this.label27.Text = "Экспорт перечня заявок на отлов:";
             // 
-            // btnExportToWord
-            // 
-            this.btnExportToWord.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportToWord.BackgroundImage")));
-            this.btnExportToWord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnExportToWord.Location = new System.Drawing.Point(597, 587);
-            this.btnExportToWord.Name = "btnExportToWord";
-            this.btnExportToWord.Size = new System.Drawing.Size(58, 49);
-            this.btnExportToWord.TabIndex = 8;
-            this.btnExportToWord.UseVisualStyleBackColor = true;
-            this.btnExportToWord.Click += new System.EventHandler(this.btnExportToWord_Click);
-            // 
-            // btnExportExcel
-            // 
-            this.btnExportExcel.BackgroundImage = global::PisFirst.Properties.Resources.excel;
-            this.btnExportExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnExportExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnExportExcel.Location = new System.Drawing.Point(668, 587);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(60, 49);
-            this.btnExportExcel.TabIndex = 10;
-            this.btnExportExcel.UseVisualStyleBackColor = true;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
-            // 
             // journalGrid
             // 
             this.journalGrid.AllowUserToAddRows = false;
@@ -156,6 +132,29 @@
             this.omsuComboBox.TabIndex = 12;
             this.omsuComboBox.SelectedIndexChanged += new System.EventHandler(this.omsuComboBox_SelectedIndexChanged);
             // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.BackgroundImage = global::PisFirst.Properties.Resources.excel;
+            this.btnExportExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExportExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnExportExcel.Location = new System.Drawing.Point(668, 587);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(60, 49);
+            this.btnExportExcel.TabIndex = 10;
+            this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            // 
+            // btnExportToWord
+            // 
+            this.btnExportToWord.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportToWord.BackgroundImage")));
+            this.btnExportToWord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnExportToWord.Location = new System.Drawing.Point(597, 587);
+            this.btnExportToWord.Name = "btnExportToWord";
+            this.btnExportToWord.Size = new System.Drawing.Size(58, 49);
+            this.btnExportToWord.TabIndex = 8;
+            this.btnExportToWord.UseVisualStyleBackColor = true;
+            this.btnExportToWord.Click += new System.EventHandler(this.btnExportToWord_Click);
+            // 
             // JournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,7 +168,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dataLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "JournalForm";
@@ -185,7 +184,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label dataLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

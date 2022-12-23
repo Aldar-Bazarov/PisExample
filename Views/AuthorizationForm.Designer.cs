@@ -41,46 +41,52 @@
             // 
             this.login_label.AutoSize = true;
             this.login_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.login_label.Location = new System.Drawing.Point(80, 154);
+            this.login_label.Location = new System.Drawing.Point(60, 125);
+            this.login_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.login_label.Name = "login_label";
-            this.login_label.Size = new System.Drawing.Size(101, 32);
+            this.login_label.Size = new System.Drawing.Size(78, 26);
             this.login_label.TabIndex = 2;
             this.login_label.Text = "Логин:";
             // 
             // buttonEnter
             // 
             this.buttonEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEnter.Location = new System.Drawing.Point(86, 252);
+            this.buttonEnter.Location = new System.Drawing.Point(64, 205);
+            this.buttonEnter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonEnter.Name = "buttonEnter";
-            this.buttonEnter.Size = new System.Drawing.Size(437, 48);
+            this.buttonEnter.Size = new System.Drawing.Size(328, 39);
             this.buttonEnter.TabIndex = 5;
             this.buttonEnter.Text = "Войти";
             this.buttonEnter.UseVisualStyleBackColor = true;
             this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
+            this.buttonEnter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonEnter_KeyDown);
             // 
             // textBox_password
             // 
             this.textBox_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_password.Location = new System.Drawing.Point(218, 192);
+            this.textBox_password.Location = new System.Drawing.Point(164, 156);
+            this.textBox_password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox_password.Name = "textBox_password";
-            this.textBox_password.Size = new System.Drawing.Size(305, 34);
+            this.textBox_password.Size = new System.Drawing.Size(230, 28);
             this.textBox_password.TabIndex = 4;
             // 
             // textBox_login
             // 
             this.textBox_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_login.Location = new System.Drawing.Point(218, 152);
+            this.textBox_login.Location = new System.Drawing.Point(164, 124);
+            this.textBox_login.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox_login.Name = "textBox_login";
-            this.textBox_login.Size = new System.Drawing.Size(305, 34);
+            this.textBox_login.Size = new System.Drawing.Size(230, 28);
             this.textBox_login.TabIndex = 3;
             // 
             // password_label
             // 
             this.password_label.AutoSize = true;
             this.password_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password_label.Location = new System.Drawing.Point(80, 194);
+            this.password_label.Location = new System.Drawing.Point(60, 158);
+            this.password_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.password_label.Name = "password_label";
-            this.password_label.Size = new System.Drawing.Size(121, 32);
+            this.password_label.Size = new System.Drawing.Size(95, 26);
             this.password_label.TabIndex = 6;
             this.password_label.Text = "Пароль:";
             // 
@@ -88,17 +94,19 @@
             // 
             this.authorization_label.AutoSize = true;
             this.authorization_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.authorization_label.Location = new System.Drawing.Point(181, 61);
+            this.authorization_label.Location = new System.Drawing.Point(136, 50);
+            this.authorization_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.authorization_label.Name = "authorization_label";
-            this.authorization_label.Size = new System.Drawing.Size(235, 39);
+            this.authorization_label.Size = new System.Drawing.Size(189, 31);
             this.authorization_label.TabIndex = 7;
             this.authorization_label.Text = "Авторизация";
             // 
             // AuthorizationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.buttonEnter;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 376);
+            this.ClientSize = new System.Drawing.Size(474, 306);
             this.Controls.Add(this.authorization_label);
             this.Controls.Add(this.password_label);
             this.Controls.Add(this.buttonEnter);
@@ -106,6 +114,7 @@
             this.Controls.Add(this.textBox_login);
             this.Controls.Add(this.login_label);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AuthorizationForm";
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.AuthorizationForm_Load);

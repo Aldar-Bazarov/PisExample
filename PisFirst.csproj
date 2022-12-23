@@ -156,8 +156,14 @@
     <Compile Include="Views\RegistrationCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\RegistrationCardForm.Designer.cs">
+    <Compile Include="Views\RegistrationCardForm.designer.cs">
       <DependentUpon>RegistrationCardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\StatusHistory.Designer.cs">
+      <DependentUpon>StatusHistory.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Views\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
@@ -178,6 +184,9 @@
     <EmbeddedResource Include="Views\JournalForm.resx" />
     <EmbeddedResource Include="Views\RegistrationCardForm.resx">
       <DependentUpon>RegistrationCardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\StatusHistory.resx">
+      <DependentUpon>StatusHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Models\DbTestModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

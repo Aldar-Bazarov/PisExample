@@ -21,6 +21,7 @@ namespace PisFirst.Views
         private Filter _filter;
         public JournalForm()
         {
+
             InitializeComponent();
             CreateColumns();
         }
@@ -65,10 +66,9 @@ namespace PisFirst.Views
                     record.rc_animal_habitat,
                     record.rc_capture_reason,
                     record.AppUser.u_first_name + " " + record.AppUser.u_second_name,
-                    record.rc_find_organizrioin_date,"","",Convert.ToDateTime( record.rc_capture_date).ToShortDateString());
+                    Convert.ToDateTime(record.rc_find_organizrioin_date).ToShortDateString(), "","",Convert.ToDateTime( record.rc_capture_date).ToShortDateString());
             }
-        
-        
+            
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)
@@ -96,6 +96,7 @@ namespace PisFirst.Views
 
         private void JournalForm_Load(object sender, EventArgs e)
         {
+            dataLabel.Text = $"\"{DateTime.Now.ToShortDateString()}\"";
             var context = new TestDbModel();
             omsuComboBox.ValueMember = "md_id";
             omsuComboBox.DisplayMember = "md_name";

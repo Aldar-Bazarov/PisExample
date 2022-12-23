@@ -8,6 +8,18 @@ namespace PisFirst
     internal static class Program
     {
         public static AuthSession AuthSession;
+        public static UserRole role;
+
+        /// <summary>
+        /// Роли пользователей
+        /// </summary>
+        public enum UserRole
+        {
+            TrappingOperator,
+            OmsuOperator,
+            OtherUserRole
+        }
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -17,9 +29,9 @@ namespace PisFirst
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AuthorizationForm());
-            // Application.Run(new MainForm());
+            //Application.Run(new MainForm());
         }
     }
 
-   
+
 }

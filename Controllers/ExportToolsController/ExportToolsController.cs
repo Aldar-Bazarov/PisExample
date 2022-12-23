@@ -131,7 +131,7 @@ namespace PisFirst.Controllers.ExportToolsController
                     sheet.Cells[i + 6, 4].Value = dgvRows[i].Cells[3].Value.ToString();
                     sheet.Cells[i + 6, 5].Value = dgvRows[i].Cells[4].Value.ToString();
                     sheet.Cells[i + 6, 6].Value = dgvRows[i].Cells[5].Value.ToString();
-                    sheet.Cells[i + 6, 7].Value = dgvRows[i].Cells[6].Value.ToString();
+                    sheet.Cells[i + 6, 7].Value = dgvRows[i].Cells[6].Value == null ? "" : dgvRows[i].Cells[6].Value.ToString();
                     sheet.Cells[i + 6, 10].Value = dgvRows[i].Cells[9].Value.ToString();
                     
                 }
@@ -170,7 +170,7 @@ namespace PisFirst.Controllers.ExportToolsController
                 replaceDict.Add("#habitat#", dgvRows[i].Cells[3].Value.ToString());
                 replaceDict.Add("#reason#", dgvRows[i].Cells[4].Value.ToString());
                 replaceDict.Add("#user#", dgvRows[i].Cells[5].Value.ToString());
-                replaceDict.Add("#dateforward#", dgvRows[i].Cells[6].Value.ToString());
+                replaceDict.Add("#dateforward#", dgvRows[i].Cells[6].Value == null? "": dgvRows[i].Cells[6].Value.ToString());
                 replaceDict.Add("#date_end#", dgvRows[i].Cells[9].Value.ToString());
 
                 foreach (KeyValuePair<string, string> kvp in replaceDict)

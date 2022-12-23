@@ -59,5 +59,10 @@ namespace PisFirst.Views
                 MessageBox.Show("Такого аккаунта не существует!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void buttonEnter_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
